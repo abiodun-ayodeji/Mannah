@@ -21,7 +21,6 @@ export default function Settings() {
   return (
     <div className="aurora-page mx-auto max-w-5xl space-y-5 pb-8">
       <header className="mt-1">
-        <span className="aurora-kicker">Control Room</span>
         <h1 className="aurora-page-title mt-3">Settings</h1>
         <p className="aurora-page-subtitle">Tune your daily routine, sound, and practice pace.</p>
       </header>
