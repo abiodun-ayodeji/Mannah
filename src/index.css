@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Quicksand:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Comfortaa:wght@400;500;600;700&family=Rubik:wght@400;500;600;700&display=swap');
 
 @theme {
   /* Primary — Figma purple */
@@ -38,8 +38,8 @@
   --color-muted: #9CA3AF;
 
   /* Typography */
-  --font-display: 'Baloo 2', 'Quicksand', system-ui, sans-serif;
-  --font-body: 'Quicksand', 'Nunito', system-ui, sans-serif;
+  --font-display: 'Baloo 2', 'Rubik', system-ui, sans-serif;
+  --font-body: 'Rubik', 'Comfortaa', 'Nunito', system-ui, sans-serif;
 }
 
 * {
@@ -539,182 +539,183 @@ input:focus, select:focus {
 }
 
 :root[data-theme='bright'] body {
-  background-color: #d4ebff;
-  color: #eaf6ff;
+  background-color: #ccdef3;
+  color: #f3f9ff;
 }
 
 :root[data-theme='bright'] .aurora-flow {
   background:
-    radial-gradient(circle at 14% 10%, rgba(120, 231, 255, 0.42), transparent 35%),
-    radial-gradient(circle at 88% 84%, rgba(132, 255, 229, 0.3), transparent 40%),
-    linear-gradient(145deg, #26609a 0%, #1e4f86 46%, #1a4575 100%);
+    radial-gradient(circle at 14% 10%, rgba(122, 190, 255, 0.36), transparent 35%),
+    radial-gradient(circle at 84% 14%, rgba(255, 201, 122, 0.22), transparent 36%),
+    radial-gradient(circle at 88% 84%, rgba(126, 217, 255, 0.26), transparent 40%),
+    linear-gradient(145deg, #2a5f98 0%, #2a5b8f 46%, #224c7c 100%);
 }
 
 :root[data-theme='bright'] .aurora-orb {
-  opacity: 0.38;
-  filter: blur(60px);
+  opacity: 0.34;
+  filter: blur(58px);
 }
 
 :root[data-theme='bright'] .aurora-orb-cyan {
-  background: radial-gradient(circle, rgba(118, 236, 255, 0.88), rgba(118, 236, 255, 0));
+  background: radial-gradient(circle, rgba(134, 220, 255, 0.86), rgba(134, 220, 255, 0));
 }
 
 :root[data-theme='bright'] .aurora-orb-violet {
-  background: radial-gradient(circle, rgba(172, 188, 255, 0.82), rgba(172, 188, 255, 0));
+  background: radial-gradient(circle, rgba(255, 205, 132, 0.72), rgba(255, 205, 132, 0));
 }
 
 :root[data-theme='bright'] .aurora-glass {
-  border: 1px solid rgba(181, 226, 255, 0.56);
-  background: linear-gradient(145deg, rgba(31, 78, 124, 0.78), rgba(21, 57, 97, 0.84));
-  box-shadow: 0 16px 34px rgba(15, 45, 78, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  border: 1px solid rgba(203, 229, 255, 0.56);
+  background: linear-gradient(145deg, rgba(43, 95, 149, 0.78), rgba(33, 75, 123, 0.84));
+  box-shadow: 0 16px 34px rgba(17, 46, 77, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.22);
 }
 
 :root[data-theme='bright'] .aurora-glass-soft {
-  border: 1px solid rgba(178, 224, 255, 0.44);
-  background: linear-gradient(145deg, rgba(35, 84, 131, 0.72), rgba(25, 63, 104, 0.78));
-  box-shadow: 0 10px 24px rgba(15, 43, 74, 0.36);
+  border: 1px solid rgba(196, 225, 255, 0.44);
+  background: linear-gradient(145deg, rgba(47, 100, 154, 0.72), rgba(36, 83, 132, 0.8));
+  box-shadow: 0 10px 24px rgba(15, 43, 74, 0.34);
 }
 
 :root[data-theme='bright'] .aurora-card {
-  border: 1px solid rgba(178, 224, 255, 0.5);
-  background: linear-gradient(145deg, rgba(33, 82, 129, 0.74), rgba(23, 61, 103, 0.82));
-  box-shadow: 0 16px 30px rgba(15, 45, 78, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(199, 226, 255, 0.52);
+  background: linear-gradient(145deg, rgba(41, 91, 143, 0.76), rgba(30, 71, 117, 0.84));
+  box-shadow: 0 16px 30px rgba(15, 45, 78, 0.36), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 :root[data-theme='bright'] .aurora-card-soft {
-  border: 1px solid rgba(174, 222, 255, 0.44);
-  background: linear-gradient(140deg, rgba(42, 92, 140, 0.66), rgba(28, 69, 112, 0.74));
+  border: 1px solid rgba(191, 223, 255, 0.44);
+  background: linear-gradient(140deg, rgba(50, 102, 152, 0.68), rgba(36, 82, 130, 0.76));
   box-shadow: 0 10px 24px rgba(15, 43, 74, 0.34);
 }
 
 :root[data-theme='bright'] .aurora-subtle {
-  border: 1px solid rgba(170, 220, 255, 0.4);
-  background: rgba(92, 157, 212, 0.25);
+  border: 1px solid rgba(194, 222, 250, 0.4);
+  background: rgba(53, 102, 154, 0.26);
 }
 
 :root[data-theme='bright'] .aurora-page {
-  color: #ecf8ff;
+  color: #f1f9ff;
 }
 
 :root[data-theme='bright'] .aurora-page-title {
-  color: #f6fcff;
+  color: #f6fbff;
 }
 
 :root[data-theme='bright'] .aurora-page-subtitle {
-  color: #d4e8fb;
+  color: #d8e9fb;
 }
 
 :root[data-theme='bright'] .aurora-kicker {
-  border: 1px solid rgba(183, 227, 255, 0.5);
-  background: rgba(122, 186, 236, 0.28);
-  color: #ecf8ff;
+  border: 1px solid rgba(255, 214, 154, 0.54);
+  background: linear-gradient(130deg, rgba(255, 191, 102, 0.28), rgba(115, 172, 235, 0.26));
+  color: #fff4df;
 }
 
 :root[data-theme='bright'] .aurora-pill {
-  border: 1px solid rgba(186, 230, 255, 0.48);
-  background: linear-gradient(130deg, rgba(124, 197, 244, 0.34), rgba(140, 164, 246, 0.32));
-  color: #ecf8ff;
+  border: 1px solid rgba(255, 216, 160, 0.5);
+  background: linear-gradient(130deg, rgba(255, 191, 105, 0.3), rgba(127, 180, 241, 0.34));
+  color: #fff6e3;
 }
 
 :root[data-theme='bright'] .aurora-button-primary {
-  border: 1px solid rgba(152, 214, 255, 0.7);
-  color: #0d2f51;
-  background: linear-gradient(125deg, #f2fbff, #bde8ff);
-  box-shadow: 0 12px 22px rgba(83, 142, 194, 0.4);
+  border: 1px solid rgba(255, 219, 166, 0.78);
+  color: #173455;
+  background: linear-gradient(125deg, #ffe8be, #ffd28f);
+  box-shadow: 0 12px 22px rgba(183, 132, 64, 0.36);
 }
 
 :root[data-theme='bright'] .aurora-button-secondary {
-  border: 1px solid rgba(178, 224, 255, 0.56);
+  border: 1px solid rgba(194, 226, 255, 0.58);
   color: #edf8ff;
-  background: linear-gradient(140deg, rgba(68, 122, 180, 0.56), rgba(74, 89, 184, 0.58));
+  background: linear-gradient(140deg, rgba(71, 125, 182, 0.6), rgba(72, 102, 168, 0.62));
 }
 
 :root[data-theme='bright'] .aurora-field-label {
-  color: #d3e7fa;
+  color: #dbe9fb;
 }
 
 :root[data-theme='bright'] .aurora-input,
 :root[data-theme='bright'] .aurora-select {
-  border: 1px solid rgba(176, 223, 255, 0.58);
-  background: linear-gradient(150deg, rgba(61, 116, 171, 0.62), rgba(46, 96, 152, 0.68));
-  color: #eef9ff;
+  border: 1px solid rgba(198, 225, 252, 0.6);
+  background: linear-gradient(150deg, rgba(57, 109, 162, 0.66), rgba(44, 90, 142, 0.72));
+  color: #f5fbff;
 }
 
 :root[data-theme='bright'] .aurora-input::placeholder {
-  color: #d4e7fa;
+  color: #dcebfd;
 }
 
 :root[data-theme='bright'] .aurora-select option {
-  background: #1b4472;
-  color: #f1f9ff;
+  background: #29517f;
+  color: #f5fbff;
 }
 
 :root[data-theme='bright'] .aurora-text-main {
-  color: #eff9ff;
+  color: #f4faff;
 }
 
 :root[data-theme='bright'] .aurora-text-soft {
-  color: #d4e8fb;
+  color: #dceafb;
 }
 
 :root[data-theme='bright'] .aurora-text-faint {
-  color: #c1daef;
+  color: #c8ddf2;
 }
 
 :root[data-theme='bright'] .bg-white\/8 {
-  background-color: rgba(35, 85, 131, 0.3) !important;
+  background-color: rgba(47, 93, 142, 0.28) !important;
 }
 
 :root[data-theme='bright'] .bg-white\/5 {
-  background-color: rgba(35, 85, 131, 0.26) !important;
+  background-color: rgba(47, 93, 142, 0.24) !important;
 }
 
 :root[data-theme='bright'] .bg-white\/\[0\.04\] {
-  background-color: rgba(35, 85, 131, 0.24) !important;
+  background-color: rgba(47, 93, 142, 0.22) !important;
 }
 
 :root[data-theme='bright'] .bg-white\/10 {
-  background-color: rgba(35, 85, 131, 0.34) !important;
+  background-color: rgba(47, 93, 142, 0.32) !important;
 }
 
 :root[data-theme='bright'] .bg-white\/12 {
-  background-color: rgba(35, 85, 131, 0.38) !important;
+  background-color: rgba(47, 93, 142, 0.35) !important;
 }
 
 :root[data-theme='bright'] .bg-white\/15 {
-  background-color: rgba(35, 85, 131, 0.44) !important;
+  background-color: rgba(47, 93, 142, 0.41) !important;
 }
 
 :root[data-theme='bright'] .bg-white\/18 {
-  background-color: rgba(35, 85, 131, 0.47) !important;
+  background-color: rgba(47, 93, 142, 0.44) !important;
 }
 
 :root[data-theme='bright'] .bg-white\/20 {
-  background-color: rgba(35, 85, 131, 0.5) !important;
+  background-color: rgba(47, 93, 142, 0.48) !important;
 }
 
 :root[data-theme='bright'] .border-white\/20 {
-  border-color: rgba(194, 229, 255, 0.5) !important;
+  border-color: rgba(212, 235, 255, 0.52) !important;
 }
 
 :root[data-theme='bright'] .border-white\/15 {
-  border-color: rgba(194, 229, 255, 0.42) !important;
+  border-color: rgba(212, 235, 255, 0.44) !important;
 }
 
 :root[data-theme='bright'] .border-white\/25 {
-  border-color: rgba(194, 229, 255, 0.56) !important;
+  border-color: rgba(212, 235, 255, 0.58) !important;
 }
 
 :root[data-theme='bright'] .border-white\/24 {
-  border-color: rgba(194, 229, 255, 0.54) !important;
+  border-color: rgba(212, 235, 255, 0.56) !important;
 }
 
 :root[data-theme='bright'] .border-white\/30 {
-  border-color: rgba(194, 229, 255, 0.64) !important;
+  border-color: rgba(212, 235, 255, 0.66) !important;
 }
 
 :root[data-theme='bright'] .border-white\/35 {
-  border-color: rgba(194, 229, 255, 0.68) !important;
+  border-color: rgba(212, 235, 255, 0.7) !important;
 }
 
 :root[data-theme='bright'] .text-\[\#9db9df\],
@@ -736,35 +737,35 @@ input:focus, select:focus {
 :root[data-theme='bright'] .text-\[\#d8e9ff\],
 :root[data-theme='bright'] .text-\[\#def2ff\],
 :root[data-theme='bright'] .text-\[\#e5f3ff\] {
-  color: #dff0ff !important;
+  color: #ebf6ff !important;
 }
 
 :root[data-theme='bright'] .text-white\/40 {
-  color: rgba(228, 242, 255, 0.62) !important;
+  color: rgba(233, 245, 255, 0.66) !important;
 }
 
 :root[data-theme='bright'] .text-white\/60 {
-  color: rgba(228, 242, 255, 0.76) !important;
+  color: rgba(233, 245, 255, 0.8) !important;
 }
 
 :root[data-theme='bright'] .text-white\/70 {
-  color: rgba(228, 242, 255, 0.84) !important;
+  color: rgba(233, 245, 255, 0.86) !important;
 }
 
 :root[data-theme='bright'] .text-white\/75 {
-  color: rgba(228, 242, 255, 0.88) !important;
+  color: rgba(233, 245, 255, 0.9) !important;
 }
 
 :root[data-theme='bright'] .text-white\/80 {
-  color: rgba(228, 242, 255, 0.9) !important;
+  color: rgba(233, 245, 255, 0.92) !important;
 }
 
 :root[data-theme='bright'] .text-white\/90 {
-  color: rgba(228, 242, 255, 0.95) !important;
+  color: rgba(233, 245, 255, 0.96) !important;
 }
 
 :root[data-theme='bright'] .hover\:text-\[\#dff1ff\]:hover {
-  color: #f2fbff !important;
+  color: #f8fcff !important;
 }
 
 @keyframes aurora-drift {

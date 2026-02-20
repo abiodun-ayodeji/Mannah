@@ -294,9 +294,9 @@ export default function ParentDashboard() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.26 }}
       >
-        <h3 className="text-base font-black text-white md:text-lg">Support Development</h3>
+        <h3 className="text-base font-black text-white md:text-lg">Help Keep Mannah Free</h3>
         <p className="mt-2 text-sm font-semibold text-[#bed8f5]">
-          Contributions help keep this learning platform free for families.
+          Your support keeps Mannah ad-free and free for every family.
         </p>
         <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
           <a
@@ -305,7 +305,7 @@ export default function ParentDashboard() {
             rel="noopener noreferrer"
             className="aurora-button-primary inline-flex items-center gap-2 px-5 py-2.5 text-sm font-black"
           >
-            ☕ Support the App
+            ☕ Support Mannah
           </a>
           <a
             href="https://forms.gle/DF7jd8XH2DewR2NT8"
