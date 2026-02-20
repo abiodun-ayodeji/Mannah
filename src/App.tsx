@@ -122,7 +122,7 @@ export default function App() {
   }
 
   if (appPhase === 'onboarding') {
-    return <Onboarding onComplete={() => setAppPhase('app')} />
+    return <Onboarding onComplete={() => setAppPhase('app')} onBack={() => setAppPhase('landing')} />
   }
 
   return (
