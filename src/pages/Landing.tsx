@@ -19,14 +19,20 @@ export default function Landing({ onGetStarted }: LandingProps) {
           transition={{ duration: 0.45 }}
         >
           <motion.div
-            className="mx-auto grid h-20 w-20 place-items-center rounded-3xl bg-gradient-to-br from-cyan-300/80 via-cyan-200/60 to-violet-300/70 text-3xl font-black text-[#0a1e3e]"
+            className="mx-auto -mt-1 grid h-20 w-20 place-items-center rounded-3xl bg-gradient-to-br from-cyan-300/80 via-cyan-200/60 to-violet-300/70 text-3xl font-black text-[#0a1e3e]"
             animate={{ rotate: [0, 2, -2, 0] }}
             transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut' }}
           >
             M
           </motion.div>
 
-          <h1 className="aurora-heading mt-5 text-4xl font-black tracking-tight text-white">MANNAH</h1>
+          <h1 className="aurora-heading mt-3 text-4xl font-black tracking-tight text-white">
+            MANNA
+            <span className="relative inline-block pl-0.5">
+              H
+              <Brain className="pointer-events-none absolute -top-3 -right-3 size-4 text-cyan-200" />
+            </span>
+          </h1>
 
           <p className="mt-3 text-sm leading-relaxed text-[#c8defb] md:text-base">
             Mannah makes 11+ practice clear, focused, and motivating for children.
@@ -42,7 +48,7 @@ export default function Landing({ onGetStarted }: LandingProps) {
 
           <motion.button
             onClick={onGetStarted}
-            className="aurora-button-primary mt-6 inline-flex items-center gap-2 px-7 py-3 text-sm font-extrabold"
+            className="aurora-button-primary mt-4 flex w-full items-center justify-center gap-2 px-7 py-3.5 text-base font-black tracking-[0.01em]"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.97 }}
           >
