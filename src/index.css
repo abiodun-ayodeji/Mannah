@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Quicksand:wght@400;500;600;700&display=swap');
 
 @theme {
   /* Primary — Figma purple */
@@ -37,40 +38,8 @@
   --color-muted: #9CA3AF;
 
   /* Typography */
-  --font-display: 'Nunito', system-ui, sans-serif;
-  --font-body: 'Nunito', system-ui, sans-serif;
-}
-
-@font-face {
-  font-family: 'Nunito';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('https://fonts.gstatic.com/s/nunito/v26/XRXI3I6Li01BKofiOc5wtlZ2di8HDIkhdTQ3j6zbXWjgevT5.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Nunito';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url('https://fonts.gstatic.com/s/nunito/v26/XRXI3I6Li01BKofiOc5wtlZ2di8HDIkhdTQ3j6zbXWjgevT5.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Nunito';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url('https://fonts.gstatic.com/s/nunito/v26/XRXI3I6Li01BKofiOc5wtlZ2di8HDIkhdTo0j6zbXWjgevT5.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Nunito';
-  font-style: normal;
-  font-weight: 800;
-  font-display: swap;
-  src: url('https://fonts.gstatic.com/s/nunito/v26/XRXI3I6Li01BKofiOc5wtlZ2di8HDIkhdTQ0j6zbXWjgevT5.woff2') format('woff2');
+  --font-display: 'Baloo 2', 'Quicksand', system-ui, sans-serif;
+  --font-body: 'Quicksand', 'Nunito', system-ui, sans-serif;
 }
 
 * {
@@ -415,7 +384,7 @@ input:focus, select:focus {
 
 .aurora-heading {
   font-family: var(--font-display);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.005em;
 }
 
 .aurora-button-primary {
