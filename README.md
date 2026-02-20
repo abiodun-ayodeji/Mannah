@@ -1,73 +1,101 @@
-# React + TypeScript + Vite
+# MANNAH
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Mannah is a kid-focused 11+ learning app built to make daily practice feel like play, not pressure.
 
-Currently, two official plugins are available:
+## Why I built this
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+I am a father.
 
-## React Compiler
+I wanted a study tool my child would actually want to open every day: colorful, motivating, and structured enough for real progress. Mannah was built from that need: help children grow confidence in Maths, English, Verbal Reasoning, and Non-Verbal Reasoning while giving parents clear visibility.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## What it does
 
-## Expanding the ESLint configuration
+- Adaptive quiz flow with recommendations based on weaker topics
+- Subject journeys and constellation-style progression
+- Daily challenges and boss battles for motivation
+- XP, levels, streaks, and achievements
+- Parent dashboard with PIN lock, weekly activity, and focus areas
+- Bell notifications for:
+- `Streak at risk`
+- `Achievement unlocked`
+- `Weekly summary ready`
+- Aurora glass UI with bright/dark theme toggle (chameleon control)
+- Offline-ready PWA behavior and install prompts
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Tech stack
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- React 19 + TypeScript
+- Vite
+- Dexie + IndexedDB (local-first data)
+- Framer Motion
+- Tailwind CSS (v4)
+- date-fns
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Getting started
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Prerequisites
+
+- Node.js 18+ (recommended 20+)
+- npm
+
+### Install
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Run locally
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+### Build
+
+```bash
+npm run build
+```
+
+### Preview production build
+
+```bash
+npm run preview
+```
+
+## Scripts
+
+- `npm run dev` - start development server
+- `npm run build` - type-check and build
+- `npm run preview` - preview built app
+- `npm run lint` - run ESLint
+- `npm run generate-icons` - generate app icons
+
+## Project structure
+
+- `src/pages` - app screens (Home, Quiz, Progress, Parent, etc.)
+- `src/components` - reusable UI and feature components
+- `src/engine` - question generation logic
+- `src/gamification` - XP, streaks, achievements, bosses
+- `src/db` - Dexie/IndexedDB setup and migrations
+- `src/hooks` - app hooks (profile, XP, notifications, theme, etc.)
+
+## Data and privacy
+
+Mannah is currently local-first. Learner progress is stored in the browser using IndexedDB.
+
+## Contributing
+
+Contributions are welcome and appreciated.
+
+If you are a parent, teacher, developer, or designer and want to improve learning outcomes for kids, please contribute:
+
+1. Fork the repo
+2. Create a feature branch
+3. Commit your changes
+4. Open a pull request
+
+You can also open issues for bugs, ideas, or curriculum improvements.
+
+## Acknowledgment
+
+Built with care for children who need consistency, confidence, and joy in learning.
