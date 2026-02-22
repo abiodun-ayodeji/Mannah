@@ -545,12 +545,12 @@ input:focus, select:focus {
 :root[data-theme='bright'] body,
 :root[data-theme='bright'] html,
 :root[data-theme='bright'] #root {
-  background-color: #87CEEB;
+  background-color: #C5CAFF;
   color: #0f1419;
 }
 
 :root[data-theme='bright'] .aurora-flow {
-  background: #87CEEB;
+  background: #C5CAFF;
 }
 
 /* Hide aurora orbs completely in light mode */
