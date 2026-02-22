@@ -10,6 +10,8 @@ export function calculateXP(params: {
   timeTaken: number;
   timeLimit: number | null;
   sessionStreak: number;
+  /** Number of sessions already completed today on this topic. Used for diminishing returns. */
+  todayTopicSessions?: number;
 }): number {
   if (!params.isCorrect) return 2;
 
@@ -25,6 +27,14 @@ export function calculateXP(params: {
 
   const streakBonus = Math.min(params.sessionStreak * 0.05, 0.5);
   xp *= 1 + streakBonus;
+
+  // Diminishing returns: each repeated session on the same topic today
+  // earns less. Factor = 1 / (1 + n), floored at 25%.
+  // 1st repeat: ×0.50, 2nd: ×0.33, 3rd+: ×0.25
+  if (params.todayTopicSessions && params.todayTopicSessions > 0) {
+    const repeatFactor = Math.max(0.25, 1 / (1 + params.todayTopicSessions));
+    xp *= repeatFactor;
+  }
 
   return Math.round(xp);
 }

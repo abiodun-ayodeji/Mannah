@@ -49,3 +49,19 @@ export function getDifficultyForAccuracy(accuracy: number): Difficulty {
     return (Math.random() < 0.5 ? 3 : 4) as Difficulty;
   }
 }
+
+/**
+ * Returns the minimum difficulty a child should be allowed on a topic,
+ * based on their all-time accuracy. Used to prevent farming easy levels.
+ * Deterministic (no randomness) so it can be used in useMemo.
+ *   < 50%  → D1 (struggling, keep easy)
+ *   50-70% → D2
+ *   70-85% → D3 (comfortable, push harder)
+ *   ≥ 85%  → D4
+ */
+export function getMinDifficultyForAccuracy(accuracy: number): Difficulty {
+  if (accuracy < 0.5) return 1 as Difficulty;
+  if (accuracy < 0.7) return 2 as Difficulty;
+  if (accuracy < 0.85) return 3 as Difficulty;
+  return 4 as Difficulty;
+}

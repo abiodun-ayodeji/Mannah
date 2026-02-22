@@ -112,13 +112,27 @@ function buildSeriesAndAnswer(
         count: 1,
       }));
 
-      correct = { ...series[0], rotation: baseRot + rotStep * seriesLength };
+      const correctRot = (baseRot + rotStep * seriesLength) % 360;
+      correct = { ...series[0], rotation: correctRot };
 
-      wrongOptions = [
-        { ...correct, rotation: correct.rotation + rotStep },
-        { ...correct, rotation: correct.rotation - rotStep * 2 },
-        { ...correct, rotation: baseRot },
-      ];
+      // Build distractors, skipping any that visually match the correct rotation.
+      const candidateOffsets = [rotStep, -rotStep * 2, rotStep * 2, -rotStep * 3];
+      const distractors: ShapeSpec[] = [];
+      for (const offset of candidateOffsets) {
+        const rot = ((correctRot + offset) % 360 + 360) % 360;
+        if (rot !== correctRot && distractors.every((d) => d.rotation !== rot)) {
+          distractors.push({ ...correct, rotation: rot });
+          if (distractors.length === 3) break;
+        }
+      }
+      // Fallback: if not enough unique distractors, add a fixed offset
+      while (distractors.length < 3) {
+        const fallbackRot = (correctRot + 15 * (distractors.length + 1)) % 360;
+        if (distractors.every((d) => d.rotation !== fallbackRot)) {
+          distractors.push({ ...correct, rotation: fallbackRot });
+        }
+      }
+      wrongOptions = distractors;
       break;
     }
 
@@ -149,8 +163,10 @@ function buildSeriesAndAnswer(
     case 'fillProgress': {
       const shapeType = pick(['circle', 'rect'] as const, rng);
       const size = randomInt(20, 30, rng);
-      const opacityStep = 0.2;
-      const startOpacity = 0.2;
+      // Fixed steps ensure clear visual distinction and no duplicate options.
+      // seriesLength=3 uses indices 0-2, correct=index 3 (0.75)
+      // seriesLength=4 uses indices 0-3, correct=index 4 (1.0)
+      const OPACITY_STEPS = [0, 0.25, 0.5, 0.75, 1.0];
 
       series = Array.from({ length: seriesLength }, (_, i) => ({
         type: shapeType,
@@ -158,19 +174,23 @@ function buildSeriesAndAnswer(
         rotation: 0,
         sides: 4,
         fill: color,
-        fillOpacity: Math.min(1, startOpacity + opacityStep * i),
+        fillOpacity: OPACITY_STEPS[i],
         count: 1,
       }));
 
-      correct = {
-        ...series[0],
-        fillOpacity: Math.min(1, startOpacity + opacityStep * seriesLength),
-      };
+      const correctOpacity = OPACITY_STEPS[seriesLength];
+      correct = { ...series[0], fillOpacity: correctOpacity };
 
+      // Distractors: back to start, same as last in series, "too far" or mid-point.
+      // All guaranteed distinct from correct and from each other.
+      const tooFarOpacity =
+        seriesLength < OPACITY_STEPS.length - 1
+          ? OPACITY_STEPS[seriesLength + 1]
+          : OPACITY_STEPS[seriesLength - 2];
       wrongOptions = [
-        { ...correct, fillOpacity: startOpacity },
-        { ...correct, fillOpacity: Math.min(1, startOpacity + opacityStep * (seriesLength + 2)) },
-        { ...correct, fillOpacity: 0.1 },
+        { ...correct, fillOpacity: OPACITY_STEPS[0] },
+        { ...correct, fillOpacity: OPACITY_STEPS[seriesLength - 1] },
+        { ...correct, fillOpacity: tooFarOpacity },
       ];
       break;
     }

@@ -1,10 +1,15 @@
 import { useMemo, useEffect } from 'react'
+import { useLiveQuery } from 'dexie-react-hooks'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import type { Question, Difficulty } from '../types/question'
 import type { Topic } from '../types/subject'
 import { Subject } from '../types/subject'
 import { generateQuizQuestions, getAvailableTopics } from '../engine/question-engine'
+import { getMinDifficultyForAccuracy } from '../utils/practice-recommendations'
+import { db } from '../db/database'
 import QuizSession from '../components/quiz/QuizSession'
+
+const MIN_ATTEMPTS_FOR_BUMP = 5
 
 export default function QuizPage() {
   const [searchParams] = useSearchParams()
@@ -15,10 +20,26 @@ export default function QuizPage() {
   const count = parseInt(searchParams.get('count') ?? '10', 10)
   const diff = parseInt(searchParams.get('difficulty') ?? '2', 10) as Difficulty
 
+  // For single-topic sessions, compute the child's all-time accuracy on that topic.
+  // Once they have enough attempts and a high enough accuracy, we raise the minimum
+  // difficulty so they cannot keep farming an easy level indefinitely.
+  const topicAccuracy = useLiveQuery(async () => {
+    if (!topic) return null
+    const attempts = await db.attempts.where('topic').equals(topic).toArray()
+    if (attempts.length < MIN_ATTEMPTS_FOR_BUMP) return null
+    return attempts.filter((a) => a.isCorrect).length / attempts.length
+  }, [topic])
+
+  const effectiveDiff = useMemo<Difficulty>(() => {
+    if (topicAccuracy == null) return diff
+    const minDiff = getMinDifficultyForAccuracy(topicAccuracy)
+    return Math.max(diff, minDiff) as Difficulty
+  }, [diff, topicAccuracy])
+
   const topics = useMemo(() => (topic ? [topic] : getAvailableTopics(subject)), [subject, topic])
   const questions = useMemo<Question[]>(
-    () => (topics.length > 0 ? generateQuizQuestions(topics, count, diff) : []),
-    [topics, count, diff]
+    () => (topics.length > 0 ? generateQuizQuestions(topics, count, effectiveDiff) : []),
+    [topics, count, effectiveDiff]
   )
 
   useEffect(() => {

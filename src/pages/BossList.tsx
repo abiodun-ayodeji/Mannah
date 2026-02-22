@@ -33,7 +33,7 @@ export default function BossList() {
 
         <div className="relative z-10">
           <div className="text-3xl mb-2">⚔️</div>
-          <h2 className="text-xl font-semibold mb-1">Challenge the Bosses!</h2>
+          <h2 className="text-xl font-semibold mb-1 text-white">Challenge the Bosses!</h2>
           <p className="text-white/70 text-sm">
             Answer questions to deal damage. Get one wrong and the boss fights back!
           </p>
