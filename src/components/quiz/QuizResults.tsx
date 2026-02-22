@@ -122,7 +122,7 @@ export default function QuizResults({ attempts, totalXP, onRetry }: QuizResultsP
     : 'Keep practising!'
 
   return (
-    <div className="aurora-flow relative flex min-h-screen flex-col items-center justify-center overflow-hidden p-6">
+    <div className="quiz-shell aurora-flow relative flex min-h-screen flex-col items-center justify-center overflow-hidden p-6">
       <div className="aurora-orb aurora-orb-cyan top-[-190px] right-[-120px] h-[420px] w-[420px]" />
       <div className="aurora-orb aurora-orb-violet bottom-[-170px] left-[-140px] h-[430px] w-[430px]" />
 

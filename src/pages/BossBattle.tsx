@@ -195,7 +195,7 @@ export default function BossBattlePage() {
 
   if (!boss) {
     return (
-      <div className="aurora-flow flex min-h-screen items-center justify-center">
+      <div className="boss-shell aurora-flow flex min-h-screen items-center justify-center">
         <p className="rounded-2xl aurora-card px-6 py-4 text-sm font-bold text-[#d2e8ff]">Boss not found</p>
       </div>
     )
@@ -204,7 +204,7 @@ export default function BossBattlePage() {
   // INTRO SCREEN
   if (phase === 'intro') {
     return (
-      <div className="aurora-flow relative flex min-h-screen flex-col items-center justify-center overflow-hidden p-6 text-center">
+      <div className="boss-shell aurora-flow relative flex min-h-screen flex-col items-center justify-center overflow-hidden p-6 text-center">
         {/* Decorative gradient overlays (no backdrop-blur, just bg blurs) */}
         <div className="aurora-orb aurora-orb-cyan top-[-170px] right-[-130px] h-[420px] w-[420px]" />
         <div className="aurora-orb aurora-orb-violet bottom-[-180px] left-[-140px] h-[430px] w-[430px]" />
@@ -261,7 +261,7 @@ export default function BossBattlePage() {
   // VICTORY SCREEN
   if (phase === 'victory') {
     return (
-      <div className="aurora-flow relative flex min-h-screen flex-col items-center justify-center overflow-hidden p-6 text-center">
+      <div className="boss-shell aurora-flow relative flex min-h-screen flex-col items-center justify-center overflow-hidden p-6 text-center">
         {/* Confetti burst */}
         <ConfettiBurst />
 
@@ -300,7 +300,7 @@ export default function BossBattlePage() {
   // DEFEAT SCREEN
   if (phase === 'defeat') {
     return (
-      <div className="aurora-flow relative flex min-h-screen flex-col items-center justify-center overflow-hidden p-6 text-center">
+      <div className="boss-shell aurora-flow relative flex min-h-screen flex-col items-center justify-center overflow-hidden p-6 text-center">
         {/* Decorative gradient overlay */}
         <div className="aurora-orb aurora-orb-violet top-[-150px] right-[-140px] h-[420px] w-[420px]" />
         <div className="aurora-orb aurora-orb-cyan bottom-[-180px] left-[-120px] h-[430px] w-[430px]" />
@@ -358,7 +358,7 @@ export default function BossBattlePage() {
   const playerHPPct = playerHP
 
   return (
-    <div className="aurora-flow relative min-h-screen overflow-hidden">
+    <div className="boss-shell aurora-flow relative min-h-screen overflow-hidden">
       <div className="aurora-orb aurora-orb-cyan top-[-180px] right-[-120px] h-[420px] w-[420px]" />
       <div className="aurora-orb aurora-orb-violet bottom-[-170px] left-[-140px] h-[430px] w-[430px]" />
 

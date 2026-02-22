@@ -219,7 +219,7 @@ export default function QuizSession({ questions, onFinish, sessionType = 'practi
   const progress = ((currentIdx + 1) / questions.length) * 100
 
   return (
-    <div className="aurora-flow relative min-h-screen overflow-x-hidden">
+    <div className="quiz-shell aurora-flow relative min-h-screen overflow-x-hidden">
       <div className="aurora-orb aurora-orb-cyan top-[-200px] right-[-120px] h-[420px] w-[420px]" />
       <div className="aurora-orb aurora-orb-violet bottom-[-180px] left-[-150px] h-[430px] w-[430px]" />
 
