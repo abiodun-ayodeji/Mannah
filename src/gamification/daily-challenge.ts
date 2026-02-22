@@ -17,7 +17,7 @@ export interface DailyChallenge {
 }
 
 const CHALLENGE_TEMPLATES = [
-  { title: 'Speed Demon', description: 'Answer quickly for bonus XP!', emoji: '⚡', count: 5 },
+  { title: 'Speed Bolt', description: 'Answer quickly for bonus XP!', emoji: '⚡', count: 5 },
   { title: 'Brain Buster', description: 'Tackle harder questions!', emoji: '🧠', count: 8 },
   { title: 'Perfect Run', description: 'Try to get them all right!', emoji: '🎯', count: 5 },
   { title: 'Marathon', description: 'A longer challenge awaits!', emoji: '🏃', count: 15 },

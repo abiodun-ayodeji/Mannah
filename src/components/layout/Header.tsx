@@ -177,11 +177,6 @@ export default function Header() {
             </AnimatePresence>
           </div>
 
-          {/* Avatar placeholder */}
-          <div className="topbar-avatar flex h-9 w-9 items-center justify-center rounded-full text-sm font-extrabold">
-            S
-          </div>
-
           {/* Theme toggle */}
           <ChameleonThemeToggle mode={mode} onToggle={toggleMode} />
         </div>
