@@ -9,7 +9,7 @@ import { useXP } from '../hooks/useXP'
 import { useStreak } from '../hooks/useStreak'
 import { getLevelTitle } from '../types/gamification'
 import { getTopicStats } from '../utils/practice-recommendations'
-import { ChevronDown, Heart, MessageSquare, Flame, Target, Zap, TrendingUp } from 'lucide-react'
+import { ChevronDown, Heart, MessageSquare, Flame, Target, TrendingUp } from 'lucide-react'
 
 export default function ParentDashboard() {
   const navigate = useNavigate()
@@ -125,16 +125,35 @@ export default function ParentDashboard() {
     insights.push({ icon: TrendingUp, accent: '#10b981', iconBg: 'rgba(16,185,129,0.1)', title: 'Strong Week!', body: `${weeklyAccuracy}% accuracy across ${weeklyTotal} questions. Excellent momentum.` })
   }
 
-  insights.push({ icon: Zap, accent: '#5b4cff', iconBg: 'rgba(91,76,255,0.1)', title: 'Weekly Target', body: '20+ questions across at least 2 subjects per day builds well-rounded exam readiness.' })
 
   return (
     <div className="aurora-page mx-auto max-w-3xl space-y-4 pb-24">
 
       {/* Header */}
-      <header className="mt-1">
-        <h1 className="aurora-page-title">Parent Dashboard</h1>
-        <p className="aurora-page-subtitle">Live snapshot of progress, confidence, and momentum.</p>
+      <header className="mt-1 flex items-start justify-between gap-3">
+        <div>
+          <h1 className="aurora-page-title">Parent Dashboard</h1>
+          <p className="aurora-page-subtitle">Live snapshot of progress, confidence, and momentum.</p>
+        </div>
+        <div className="flex flex-col items-end gap-1 flex-shrink-0">
+          <motion.button
+            onClick={() => setShowSetPin((p) => !p)}
+            className="aurora-button-primary px-3 py-1.5 text-xs font-black"
+            whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}
+          >
+            {showSetPin ? 'Cancel' : profile?.parentPin ? '🔒 PIN' : 'Set PIN'}
+          </motion.button>
+          {profile?.parentPin && !showSetPin && (
+            <span className="text-[10px] font-semibold text-[#aac9ea]">PIN set</span>
+          )}
+        </div>
       </header>
+
+      {showSetPin && (
+        <motion.section className="aurora-card-soft rounded-2xl p-4" initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }}>
+          <PinSetter onSet={handleSetPin} />
+        </motion.section>
+      )}
 
       {/* Student hero */}
       <motion.section
@@ -252,26 +271,6 @@ export default function ParentDashboard() {
           })}
         </div>
       </motion.section>
-
-      {/* PIN */}
-      <motion.section
-        className="aurora-card-soft flex flex-wrap items-center justify-between gap-3 rounded-2xl p-4"
-        initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.22 }}
-      >
-        <div>
-          <p className="text-sm font-black text-white">Parent PIN</p>
-          <p className="text-xs font-semibold text-[#aac9ea]">{profile?.parentPin ? 'PIN is set.' : 'No PIN set yet.'}</p>
-        </div>
-        <motion.button onClick={() => setShowSetPin((p) => !p)} className="aurora-button-primary px-4 py-2 text-sm font-black" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}>
-          {showSetPin ? 'Cancel' : 'Set / Update PIN'}
-        </motion.button>
-      </motion.section>
-
-      {showSetPin && (
-        <motion.section className="aurora-card-soft rounded-2xl p-4" initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }}>
-          <PinSetter onSet={handleSetPin} />
-        </motion.section>
-      )}
 
       {/* Help Keep Mannah Free — collapsible */}
       <motion.section
