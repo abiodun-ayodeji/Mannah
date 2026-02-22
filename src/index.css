@@ -1234,6 +1234,42 @@ input:focus, select:focus {
   background-color: rgba(255, 255, 255, 0.15) !important;
 }
 
+/* ── SPACE BACKGROUND — constellation page always stays dark ───────────── */
+:root[data-theme='bright'] .space-bg {
+  background: linear-gradient(180deg, #0a0a1a 0%, #1a1030 50%, #0d0d2b 100%) !important;
+}
+:root[data-theme='bright'] .space-bg [class*="text-white"] { color: #ffffff !important; }
+:root[data-theme='bright'] .space-bg .text-white\/60 { color: rgba(255,255,255,0.6) !important; }
+:root[data-theme='bright'] .space-bg .text-white\/70 { color: rgba(255,255,255,0.7) !important; }
+:root[data-theme='bright'] .space-bg [class*="text-[#"] { color: #d0e4ff !important; }
+:root[data-theme='bright'] .space-bg .bg-white\/5  { background-color: rgba(255,255,255,0.05) !important; }
+:root[data-theme='bright'] .space-bg .bg-white\/8  { background-color: rgba(255,255,255,0.08) !important; }
+:root[data-theme='bright'] .space-bg .bg-white\/10 { background-color: rgba(255,255,255,0.10) !important; }
+:root[data-theme='bright'] .space-bg .bg-white\/12 { background-color: rgba(255,255,255,0.12) !important; }
+:root[data-theme='bright'] .space-bg .bg-white\/15 { background-color: rgba(255,255,255,0.15) !important; }
+:root[data-theme='bright'] .space-bg .bg-white\/18 { background-color: rgba(255,255,255,0.18) !important; }
+:root[data-theme='bright'] .space-bg .bg-white\/20 { background-color: rgba(255,255,255,0.20) !important; }
+:root[data-theme='bright'] .space-bg .border-white\/20 { border-color: rgba(255,255,255,0.20) !important; }
+:root[data-theme='bright'] .space-bg .border-white\/25 { border-color: rgba(255,255,255,0.25) !important; }
+
+/* ── BOSS LIST HERO — dark indigo banner with white text ───────────────── */
+:root[data-theme='bright'] .boss-list-hero {
+  background: linear-gradient(135deg, #1e1b4b, #3730a3, #4f46e5) !important;
+  border-color: rgba(99,102,241,0.35) !important;
+}
+:root[data-theme='bright'] .boss-list-hero [class*="text-white"] { color: #ffffff !important; }
+:root[data-theme='bright'] .boss-list-hero .text-white\/70 { color: rgba(255,255,255,0.7) !important; }
+:root[data-theme='bright'] .boss-list-hero [class*="bg-white"] { background-color: rgba(255,255,255,0.12) !important; }
+
+/* ── DAILY CHALLENGE HERO — solid amber banner with white text ─────────── */
+:root[data-theme='bright'] .daily-challenge-hero {
+  background: linear-gradient(135deg, #b45309, #d97706) !important;
+  border-color: rgba(217,119,6,0.4) !important;
+}
+:root[data-theme='bright'] .daily-challenge-hero [class*="text-white"] { color: #ffffff !important; }
+:root[data-theme='bright'] .daily-challenge-hero .text-white\/80 { color: rgba(255,255,255,0.8) !important; }
+:root[data-theme='bright'] .daily-challenge-hero [class*="bg-white"] { background-color: rgba(255,255,255,0.2) !important; }
+
 /* Slightly richer in bright mode so it pops against the periwinkle canvas */
 :root[data-theme='bright'] .home-mission-card {
   background: linear-gradient(135deg, #1e1880 0%, #3730a3 40%, #5b4cff 100%);

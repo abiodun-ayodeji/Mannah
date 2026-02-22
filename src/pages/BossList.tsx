@@ -23,7 +23,7 @@ export default function BossList() {
 
       {/* Dark gradient hero banner */}
       <motion.div
-        className="relative overflow-hidden rounded-2xl border border-white/20 bg-gradient-to-br from-[#5b4cff]/30 to-[#2a4d9d]/24 p-6 text-white shadow-lg"
+        className="boss-list-hero relative overflow-hidden rounded-2xl border border-white/20 bg-gradient-to-br from-[#5b4cff]/30 to-[#2a4d9d]/24 p-6 text-white shadow-lg"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
       >

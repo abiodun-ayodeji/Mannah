@@ -59,7 +59,7 @@ export default function DailyChallengePage() {
 
       {/* Amber gradient hero banner */}
       <motion.div
-        className="relative overflow-hidden rounded-2xl border border-amber-200/35 bg-gradient-to-br from-amber-300/28 to-orange-300/22 p-6 text-white shadow-lg"
+        className="daily-challenge-hero relative overflow-hidden rounded-2xl border border-amber-200/35 bg-gradient-to-br from-amber-300/28 to-orange-300/22 p-6 text-white shadow-lg"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
       >
