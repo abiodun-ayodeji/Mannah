@@ -366,6 +366,16 @@ export default function BossBattlePage() {
       <div className="relative z-10 flex min-h-screen flex-col">
         <div className="sticky top-0 z-20 px-4 pt-4 md:px-6">
           <div className="mx-auto w-full max-w-4xl rounded-2xl aurora-glass px-4 py-3">
+            {/* Flee button */}
+            <div className="mb-2 flex justify-end">
+              <button
+                onClick={() => navigate('/bosses')}
+                className="flex items-center gap-1 rounded-lg px-2.5 py-1 text-[11px] font-bold text-white/40 transition-colors hover:bg-white/10 hover:text-white/70"
+              >
+                <ChevronLeft className="size-3" />
+                Flee
+              </button>
+            </div>
             <div className="relative mb-2 flex items-center gap-2">
               <motion.span
                 className="text-2xl"
