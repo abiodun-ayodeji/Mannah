@@ -1155,6 +1155,23 @@ input:focus, select:focus {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* Mission card — works in both themes */
+.home-mission-card {
+  background: linear-gradient(135deg, #1e1880 0%, #4338ca 45%, #6d5ef7 100%);
+}
+
+/* Restore white text inside the mission card — overrides the bright-mode catch-all */
+:root[data-theme='bright'] .home-mission-card [class*="text-white"],
+:root[data-theme='bright'] .home-mission-card [class*="text-[#"] {
+  color: #ffffff !important;
+}
+
+/* Slightly richer in bright mode so it pops against the periwinkle canvas */
+:root[data-theme='bright'] .home-mission-card {
+  background: linear-gradient(135deg, #1e1880 0%, #3730a3 40%, #5b4cff 100%);
+  box-shadow: 0 8px 32px rgba(67, 56, 202, 0.35);
+}
+
 /* ── Bright mode overrides ── */
 :root[data-theme='bright'] .home-section-title { color: #0f1419; }
 :root[data-theme='bright'] .home-section-label { color: #5b4cff; }
