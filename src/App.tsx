@@ -78,39 +78,46 @@ export default function App() {
 
   if (appPhase === 'loading' || !splashDone) {
     return (
-      <div className="aurora-flow min-h-screen relative overflow-hidden px-6 py-10 flex items-center justify-center">
-        <div className="aurora-orb aurora-orb-cyan top-[-110px] left-[-140px] h-[360px] w-[360px]" />
-        <div className="aurora-orb aurora-orb-violet bottom-[-120px] right-[-120px] h-[380px] w-[380px]" />
+      <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6" style={{ background: '#5b4cff' }}>
+        {/* Floating circles — same as landing page */}
+        <div className="pointer-events-none absolute top-16 left-8 h-36 w-36 animate-float rounded-full bg-white/[0.04]" />
+        <div className="pointer-events-none absolute right-6 bottom-28 h-52 w-52 animate-float rounded-full bg-white/[0.04]" style={{ animationDelay: '2s' }} />
+        <div className="pointer-events-none absolute top-1/4 right-12 h-20 w-20 animate-float rounded-full bg-white/[0.07]" style={{ animationDelay: '4s' }} />
+        <div className="pointer-events-none absolute bottom-1/3 left-12 h-14 w-14 animate-float rounded-full bg-white/[0.06]" style={{ animationDelay: '3s' }} />
+
         <motion.div
-          className="relative z-10 w-full max-w-xl aurora-glass rounded-3xl p-8 md:p-10 text-center"
-          initial={{ opacity: 0, scale: 0.96, y: 12 }}
+          className="relative z-10 flex flex-col items-center"
+          initial={{ opacity: 0, scale: 0.92, y: 12 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.45 }}
         >
-          <p className="aurora-pill mx-auto w-fit text-xs uppercase tracking-[0.18em]">Adaptive 11+ Practice</p>
-          <motion.div
-            className="mx-auto mt-6 grid h-20 w-20 place-items-center rounded-3xl bg-gradient-to-br from-cyan-300/80 via-cyan-200/60 to-violet-300/70 text-3xl font-black text-[#0a1e3e]"
-            animate={{ rotate: [0, 2, -2, 0] }}
-            transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut' }}
-          >
-            M
-          </motion.div>
-          <h1 className="aurora-heading mt-5 text-4xl font-black tracking-tight text-white">MANNAH</h1>
-          <p className="mt-3 text-sm text-[#c8defb]">
-            Preparing your personalized learning arena.
-          </p>
-          <div className="mt-7 grid grid-cols-3 gap-2 text-[11px] font-semibold text-[#d8e9ff]">
-            <span className="aurora-pill">Syncing profile</span>
-            <span className="aurora-pill">Warming engine</span>
-            <span className="aurora-pill">Loading goals</span>
+          {/* Logo */}
+          <div className="flex h-28 w-28 items-center justify-center rounded-[1.75rem] bg-white/15 shadow-2xl ring-1 ring-white/10">
+            <span className="text-6xl font-black text-white">M</span>
           </div>
-          <div className="mt-6 h-2 overflow-hidden rounded-full bg-white/10">
-            <motion.div
-              className="h-full rounded-full bg-gradient-to-r from-cyan-300 via-sky-300 to-violet-300"
-              initial={{ width: '14%' }}
-              animate={{ width: ['14%', '58%', '88%'] }}
-              transition={{ duration: 1.8, repeat: Infinity, repeatType: 'reverse', ease: 'easeInOut' }}
-            />
+
+          {/* Brand */}
+          <h1 className="mt-6 text-5xl font-black tracking-tight text-white">
+            Manna<span style={{ color: '#FCD34D' }}>h</span>
+          </h1>
+          <p className="mt-2 text-xs font-bold uppercase tracking-[0.22em] text-white/40">
+            Adaptive 11+ Practice
+          </p>
+
+          {/* Progress bar */}
+          <div className="mt-10 w-64">
+            <div className="h-1.5 overflow-hidden rounded-full bg-white/15">
+              <motion.div
+                className="h-full rounded-full"
+                style={{ background: '#FCD34D' }}
+                initial={{ width: '12%' }}
+                animate={{ width: ['12%', '55%', '85%'] }}
+                transition={{ duration: 1.6, repeat: Infinity, repeatType: 'reverse', ease: 'easeInOut' }}
+              />
+            </div>
+            <p className="mt-3 text-center text-xs font-medium text-white/40">
+              Finding where you left off…
+            </p>
           </div>
         </motion.div>
       </div>
