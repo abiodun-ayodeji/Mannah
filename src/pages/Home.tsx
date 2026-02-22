@@ -258,45 +258,62 @@ export default function Home() {
           </div>
         </motion.div>
 
-        {/* Activities card */}
-        <motion.div
-          className="home-panel rounded-2xl p-4"
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.16 }}
-        >
-          <h2 className="home-section-title mb-3 text-sm font-black">Activities</h2>
-          <div className="flex flex-col">
-            {[
-              { label: 'Daily Challenges', description: 'Fresh goals for today', icon: Target, to: '/daily-challenges' },
-              { label: 'Boss Battles', description: 'Defeat bosses, win XP', icon: Swords, to: '/bosses' },
-              { label: 'Achievements', description: 'Track milestones', icon: Award, to: '/achievements' },
-            ].map((item, i) => {
-              const Icon = item.icon
-              return (
-                <motion.button
-                  key={item.label}
-                  onClick={() => navigate(item.to)}
-                  className="activity-row flex items-center gap-3 rounded-xl px-3 py-3 text-left"
-                  whileHover={{ x: 1 }}
-                  whileTap={{ scale: 0.98 }}
-                  initial={{ opacity: 0, x: 6 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.18 + 0.05 * i }}
+        {/* Activities — individual cards */}
+        <div className="flex flex-col gap-3">
+          <h2 className="home-section-title text-sm font-black px-0.5">Activities</h2>
+          {[
+            {
+              label: 'Daily Challenges',
+              description: 'Fresh goals to keep your streak going',
+              icon: Target,
+              to: '/daily-challenges',
+              accent: '#F59E0B',
+              iconBg: 'rgba(245,158,11,0.12)',
+            },
+            {
+              label: 'Boss Battles',
+              description: 'Defeat bosses and earn bonus XP',
+              icon: Swords,
+              to: '/bosses',
+              accent: '#EF4444',
+              iconBg: 'rgba(239,68,68,0.1)',
+            },
+            {
+              label: 'Achievements',
+              description: 'Milestones you\'ve earned so far',
+              icon: Award,
+              to: '/achievements',
+              accent: '#5b4cff',
+              iconBg: 'rgba(91,76,255,0.1)',
+            },
+          ].map((item, i) => {
+            const Icon = item.icon
+            return (
+              <motion.button
+                key={item.label}
+                onClick={() => navigate(item.to)}
+                className="activity-card flex items-center gap-4 rounded-2xl p-4 text-left"
+                whileHover={{ y: -1 }}
+                whileTap={{ scale: 0.98 }}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.18 + 0.05 * i }}
+              >
+                <div
+                  className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl"
+                  style={{ background: item.iconBg }}
                 >
-                  <div className="activity-icon flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl">
-                    <Icon className="size-4" />
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <p className="activity-title text-sm font-bold">{item.label}</p>
-                    <p className="activity-desc mt-0.5 text-xs">{item.description}</p>
-                  </div>
-                  <ChevronRight className="activity-chevron size-4 flex-shrink-0" />
-                </motion.button>
-              )
-            })}
-          </div>
-        </motion.div>
+                  <Icon className="size-5" style={{ color: item.accent }} strokeWidth={2} />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="activity-title text-sm font-extrabold">{item.label}</p>
+                  <p className="activity-desc mt-0.5 text-xs leading-relaxed">{item.description}</p>
+                </div>
+                <ChevronRight className="activity-chevron size-4 flex-shrink-0" style={{ color: item.accent }} />
+              </motion.button>
+            )
+          })}
+        </div>
 
       </div>
     </div>
