@@ -13,7 +13,7 @@ const NAV_ITEMS: { to: string; label: string; icon: LucideIcon }[] = [
 
 export default function BottomNav() {
   return (
-    <nav className="pointer-events-none fixed inset-x-0 bottom-3 z-30 px-4 md:px-8">
+    <nav className="pointer-events-none fixed inset-x-0 bottom-3 z-30 px-4 md:px-8 lg:hidden">
       <div className="pointer-events-auto mx-auto w-full max-w-6xl">
         <div className="aurora-glass-soft rounded-2xl px-2 py-2">
           <div className="grid grid-cols-5 gap-1">
