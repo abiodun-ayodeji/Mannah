@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Routes, Route } from 'react-router-dom'
 import { Analytics } from '@vercel/analytics/react'
-import { SpeedInsights } from '@vercel/speed-insights/react'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from './db/database'
 import { migrateLegacyDB } from './db/migrate-legacy'
@@ -135,7 +134,6 @@ export default function App() {
   return (
     <>
       <Analytics />
-      <SpeedInsights />
       <UpdatePrompt />
       <OfflineBanner />
       <InstallPrompt />
