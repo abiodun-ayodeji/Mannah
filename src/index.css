@@ -1161,10 +1161,15 @@ input:focus, select:focus {
   background: linear-gradient(135deg, #1e1880 0%, #4338ca 45%, #6d5ef7 100%);
 }
 
-/* Restore white text inside the mission card — overrides the bright-mode catch-all */
+/* Restore white text and transparent-white backgrounds inside the mission card
+   — both override the bright-mode main-scoped catch-alls */
 :root[data-theme='bright'] .home-mission-card [class*="text-white"],
 :root[data-theme='bright'] .home-mission-card [class*="text-[#"] {
   color: #ffffff !important;
+}
+
+:root[data-theme='bright'] .home-mission-card [class*="bg-white"] {
+  background-color: rgba(255, 255, 255, 0.15) !important;
 }
 
 /* Slightly richer in bright mode so it pops against the periwinkle canvas */
