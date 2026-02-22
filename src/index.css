@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Comfortaa:wght@400;500;600;700&family=Rubik:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap');
 
 @theme {
   /* Primary — Figma purple */
@@ -38,8 +38,8 @@
   --color-muted: #9CA3AF;
 
   /* Typography */
-  --font-display: 'Baloo 2', 'Rubik', system-ui, sans-serif;
-  --font-body: 'Rubik', 'Comfortaa', 'Nunito', system-ui, sans-serif;
+  --font-display: 'Nunito', system-ui, sans-serif;
+  --font-body: 'Nunito', system-ui, sans-serif;
 }
 
 * {
@@ -51,6 +51,7 @@
 html, body, #root {
   height: 100%;
   font-family: var(--font-body);
+  font-weight: 400;
   background-color: var(--color-bg);
   color: var(--color-text);
   -webkit-font-smoothing: antialiased;
@@ -384,6 +385,7 @@ input:focus, select:focus {
 
 .aurora-heading {
   font-family: var(--font-display);
+  font-weight: 600;
   letter-spacing: -0.005em;
 }
 
@@ -416,7 +418,7 @@ input:focus, select:focus {
   font-family: var(--font-display);
   font-size: 1.75rem;
   line-height: 1.1;
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: -0.02em;
   color: #f3fbff;
 }
