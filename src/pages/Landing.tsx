@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ArrowRight, Brain } from 'lucide-react'
+import { ArrowRight, ShieldCheck } from 'lucide-react'
 
 interface LandingProps {
   onGetStarted: () => void
@@ -7,56 +7,81 @@ interface LandingProps {
 
 export default function Landing({ onGetStarted }: LandingProps) {
   return (
-    <div className="aurora-flow min-h-screen relative overflow-hidden px-4 py-8 md:py-12 flex items-center justify-center">
-      <div className="aurora-orb aurora-orb-cyan top-[-130px] left-[-120px] h-[340px] w-[340px]" />
-      <div className="aurora-orb aurora-orb-violet bottom-[-120px] right-[-110px] h-[360px] w-[360px]" />
+    <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-[#5b4cff] px-6">
+      {/* Floating decorative circles */}
+      <div className="absolute top-16 left-8 h-36 w-36 rounded-full bg-white/[0.04] animate-float" />
+      <div
+        className="absolute right-6 bottom-28 h-52 w-52 rounded-full bg-white/[0.04] animate-float"
+        style={{ animationDelay: '2s' }}
+      />
+      <div
+        className="absolute top-1/4 right-12 h-20 w-20 rounded-full bg-white/[0.07] animate-float"
+        style={{ animationDelay: '4s' }}
+      />
+      <div
+        className="absolute bottom-1/3 left-12 h-14 w-14 rounded-full bg-white/[0.06] animate-float"
+        style={{ animationDelay: '3s' }}
+      />
 
-      <section className="relative z-10 mx-auto w-full max-w-xl">
+      <div className="relative z-10 flex flex-col items-center gap-8">
+        {/* Logo mark */}
         <motion.div
-          className="aurora-glass rounded-3xl p-6 md:p-8 text-center"
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
+          className="flex h-28 w-28 items-center justify-center rounded-[1.75rem] bg-white/15 shadow-2xl ring-1 ring-white/10 backdrop-blur-sm"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.45 }}
         >
-          <motion.div
-            className="mx-auto -mt-1 grid h-20 w-20 place-items-center rounded-3xl bg-gradient-to-br from-cyan-300/80 via-cyan-200/60 to-violet-300/70 text-3xl font-black text-[#0a1e3e]"
-            animate={{ rotate: [0, 2, -2, 0] }}
-            transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut' }}
-          >
-            M
-          </motion.div>
-
-          <h1 className="aurora-heading mt-3 text-4xl font-black tracking-tight text-white">
-            MANNA
-            <span className="relative inline-block pl-0.5">
-              H
-              <Brain className="pointer-events-none absolute -top-3 -right-3 size-4 text-cyan-200" />
-            </span>
-          </h1>
-
-          <p className="mt-3 text-sm leading-relaxed text-[#c8defb] md:text-base">
-            Mannah makes 11+ practice clear, focused, and motivating for children.
-          </p>
-          <p className="mt-2 text-sm leading-relaxed text-[#c8defb] md:text-base">
-            Families get one simple place for daily learning, progress, and confidence.
-          </p>
-
-          <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-xs font-bold text-[#def2ff]">
-            <Brain className="size-4 text-cyan-200" />
-            No ads, No in-app purchase, No Cost, Ever
-          </div>
-
-          <motion.button
-            onClick={onGetStarted}
-            className="aurora-button-primary mt-4 flex w-full items-center justify-center gap-2 px-7 py-3.5 text-base font-black tracking-[0.01em]"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.97 }}
-          >
-            Continue
-            <ArrowRight className="size-4" />
-          </motion.button>
+          <span className="text-6xl font-black tracking-tighter text-white">M</span>
         </motion.div>
-      </section>
+
+        {/* Brand name + tagline */}
+        <motion.div
+          className="flex flex-col items-center gap-3"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.15, duration: 0.4 }}
+        >
+          <h1 className="text-5xl font-black tracking-tight text-white text-center">
+            Manna<span className="text-[#FCD34D]">h</span>
+          </h1>
+          <p className="text-center text-base font-medium leading-relaxed text-white/65">
+            Smart, adaptive 11+ practice that grows
+            <br />
+            with your child. Built for families.
+          </p>
+        </motion.div>
+
+        {/* Trust badge */}
+        <motion.div
+          className="flex items-center gap-2 rounded-full bg-white/10 px-4 py-2"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.28, duration: 0.4 }}
+        >
+          <ShieldCheck className="h-4 w-4 text-[#FCD34D]" />
+          <span className="text-xs font-semibold text-white/80">
+            No ads &middot; No in-app purchases &middot; Free forever
+          </span>
+        </motion.div>
+
+        {/* CTA */}
+        <motion.button
+          onClick={onGetStarted}
+          className="mt-4 flex items-center gap-3 rounded-2xl bg-[#FCD34D] px-10 py-4 text-base font-extrabold text-[#1a1036] shadow-lg transition-all hover:shadow-xl hover:brightness-105"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.38, duration: 0.4 }}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.97 }}
+        >
+          Get Started
+          <ArrowRight className="h-5 w-5" />
+        </motion.button>
+      </div>
+
+      <p className="absolute bottom-8 text-xs font-medium text-white/30">
+        Adaptive 11+ Practice
+      </p>
     </div>
   )
 }
