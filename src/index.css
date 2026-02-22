@@ -693,45 +693,34 @@ input:focus, select:focus {
   background: rgba(220, 38, 38, 0.04);
 }
 
-/* Flip all the dark-mode hardcoded text/bg colours to neutral dark */
-:root[data-theme='bright'] .text-white {
-  color: #0f1419 !important;
-}
+/* ── PERMANENT TEXT VISIBILITY FIX ─────────────────────────────────────────
+   Scoped to <main> so Landing, Onboarding, and Splash (which render outside
+   <main>) are untouched and always stay in their dark/indigo design.
+   ────────────────────────────────────────────────────────────────────────── */
 
-:root[data-theme='bright'] .text-\[\#9db9df\],
-:root[data-theme='bright'] .text-\[\#a8c6ea\],
-:root[data-theme='bright'] .text-\[\#a8c8ea\],
-:root[data-theme='bright'] .text-\[\#a9c6ea\],
-:root[data-theme='bright'] .text-\[\#adc9ea\],
-:root[data-theme='bright'] .text-\[\#b8d1f3\],
-:root[data-theme='bright'] .text-\[\#b8d2f3\],
-:root[data-theme='bright'] .text-\[\#b8d4f5\],
-:root[data-theme='bright'] .text-\[\#c2daf7\],
-:root[data-theme='bright'] .text-\[\#c2dcf7\],
-:root[data-theme='bright'] .text-\[\#c3daf7\],
-:root[data-theme='bright'] .text-\[\#c6ddf9\],
-:root[data-theme='bright'] .text-\[\#c8defb\],
-:root[data-theme='bright'] .text-\[\#cae0fa\],
-:root[data-theme='bright'] .text-\[\#d6e9ff\],
-:root[data-theme='bright'] .text-\[\#d7e9ff\],
-:root[data-theme='bright'] .text-\[\#d8e9ff\],
-:root[data-theme='bright'] .text-\[\#def2ff\],
-:root[data-theme='bright'] .text-\[\#e5f3ff\],
-:root[data-theme='bright'] .text-\[\#ecf8ff\],
-:root[data-theme='bright'] .text-\[\#eef9ff\],
-:root[data-theme='bright'] .text-\[\#f3fbff\] {
-  color: #6b7280 !important;
-}
-
-:root[data-theme='bright'] .text-white\/40,
-:root[data-theme='bright'] .text-white\/60,
-:root[data-theme='bright'] .text-white\/70,
-:root[data-theme='bright'] .text-white\/75,
-:root[data-theme='bright'] .text-white\/80,
-:root[data-theme='bright'] .text-white\/90 {
+/* Any hardcoded hex colour class  e.g. text-[#a9c6ea], text-[#edf8ff] */
+:root[data-theme='bright'] main [class*="text-[#"] {
   color: #374151 !important;
 }
 
+/* Any white text variant  text-white, text-white/70, text-white/90 … */
+:root[data-theme='bright'] main [class*="text-white"] {
+  color: #1f2937 !important;
+}
+
+/* Light Tailwind semantic colours that assume a dark background */
+:root[data-theme='bright'] main .text-cyan-100,
+:root[data-theme='bright'] main .text-cyan-200,
+:root[data-theme='bright'] main .text-emerald-200,
+:root[data-theme='bright'] main .text-violet-200,
+:root[data-theme='bright'] main .text-rose-100,
+:root[data-theme='bright'] main .text-rose-200,
+:root[data-theme='bright'] main .text-amber-100,
+:root[data-theme='bright'] main .text-amber-200 {
+  color: #374151 !important;
+}
+
+/* Hover overrides outside main (nav links etc.) */
 :root[data-theme='bright'] .hover\:text-\[\#dff1ff\]:hover {
   color: #0f1419 !important;
 }
