@@ -7,7 +7,7 @@ const THEME_STORAGE_KEY = 'mannah_theme_mode'
 function getStoredTheme(): ThemeMode {
   if (typeof window === 'undefined') return 'dark'
   const stored = window.localStorage.getItem(THEME_STORAGE_KEY)
-  return stored === 'dark' ? 'dark' : 'bright'
+  return stored === 'bright' ? 'bright' : 'dark'
 }
 
 function applyTheme(mode: ThemeMode) {
