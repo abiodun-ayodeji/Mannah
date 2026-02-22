@@ -725,25 +725,26 @@ input:focus, select:focus {
   color: #0f1419 !important;
 }
 
-/* White backgrounds → lavender-tinted card surface */
-:root[data-theme='bright'] .bg-white\/5,
-:root[data-theme='bright'] .bg-white\/8,
-:root[data-theme='bright'] .bg-white\/\[0\.04\],
-:root[data-theme='bright'] .bg-white\/10,
-:root[data-theme='bright'] .bg-white\/12,
-:root[data-theme='bright'] .bg-white\/15,
-:root[data-theme='bright'] .bg-white\/18,
-:root[data-theme='bright'] .bg-white\/20 {
+/* White backgrounds → lavender-tinted card surface (scoped to main so
+   splash/landing/onboarding white-opacity decorations are untouched) */
+:root[data-theme='bright'] main .bg-white\/5,
+:root[data-theme='bright'] main .bg-white\/8,
+:root[data-theme='bright'] main .bg-white\/\[0\.04\],
+:root[data-theme='bright'] main .bg-white\/10,
+:root[data-theme='bright'] main .bg-white\/12,
+:root[data-theme='bright'] main .bg-white\/15,
+:root[data-theme='bright'] main .bg-white\/18,
+:root[data-theme='bright'] main .bg-white\/20 {
   background-color: #F7F6FC !important;
 }
 
-/* White borders → indigo-tinted */
-:root[data-theme='bright'] .border-white\/15,
-:root[data-theme='bright'] .border-white\/20,
-:root[data-theme='bright'] .border-white\/24,
-:root[data-theme='bright'] .border-white\/25,
-:root[data-theme='bright'] .border-white\/30,
-:root[data-theme='bright'] .border-white\/35 {
+/* White borders → indigo-tinted (scoped to main for same reason) */
+:root[data-theme='bright'] main .border-white\/15,
+:root[data-theme='bright'] main .border-white\/20,
+:root[data-theme='bright'] main .border-white\/24,
+:root[data-theme='bright'] main .border-white\/25,
+:root[data-theme='bright'] main .border-white\/30,
+:root[data-theme='bright'] main .border-white\/35 {
   border-color: rgba(91, 76, 255, 0.18) !important;
 }
 
