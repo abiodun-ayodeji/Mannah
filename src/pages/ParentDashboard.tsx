@@ -275,7 +275,7 @@ export default function ParentDashboard() {
 
       {/* Help Keep Mannah Free — collapsible */}
       <motion.section
-        className="overflow-hidden rounded-2xl"
+        className="parent-support-banner overflow-hidden rounded-2xl"
         initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.26 }}
         style={{ background: 'linear-gradient(135deg, #1e1880 0%, #3730a3 50%, #5b4cff 100%)' }}
       >
@@ -315,7 +315,7 @@ export default function ParentDashboard() {
                   <span className="text-xl">☕</span>
                   <div>
                     <p className="text-sm font-extrabold text-white">Support Mannah</p>
-                    <p className="text-xs text-white/60">Buy us a coffee — every bit helps</p>
+                    <p className="text-xs text-white/60">Buy me a coffee — I need it to keep Mannah up to date</p>
                   </div>
                 </a>
                 <a

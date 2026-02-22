@@ -1172,6 +1172,15 @@ input:focus, select:focus {
   background-color: rgba(255, 255, 255, 0.15) !important;
 }
 
+/* Parent support banner — same dark indigo treatment, both themes */
+:root[data-theme='bright'] .parent-support-banner [class*="text-white"],
+:root[data-theme='bright'] .parent-support-banner [class*="text-[#"] {
+  color: #ffffff !important;
+}
+:root[data-theme='bright'] .parent-support-banner [class*="bg-white"] {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+}
+
 /* Slightly richer in bright mode so it pops against the periwinkle canvas */
 :root[data-theme='bright'] .home-mission-card {
   background: linear-gradient(135deg, #1e1880 0%, #3730a3 40%, #5b4cff 100%);
