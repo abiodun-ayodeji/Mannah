@@ -12,10 +12,10 @@ import { db } from '../db/database'
 const subjects = Object.values(Subject)
 
 const SUBJECT_CARD_STYLES: Record<Subject, { bg: string; text: string; ring: string }> = {
-  [Subject.MATHS]: { bg: '#dde8ff', text: '#3b5fd4', ring: '#3b5fd4' },
-  [Subject.ENGLISH]: { bg: '#d5f3e3', text: '#0d7a5f', ring: '#0d7a5f' },
-  [Subject.VERBAL_REASONING]: { bg: '#fce0f0', text: '#a0307a', ring: '#a0307a' },
-  [Subject.NON_VERBAL_REASONING]: { bg: '#fef3d5', text: '#b06b10', ring: '#b06b10' },
+  [Subject.MATHS]: { bg: '#c4d4ff', text: '#2a4fc7', ring: '#2a4fc7' },
+  [Subject.ENGLISH]: { bg: '#b0e8ca', text: '#0a6649', ring: '#0a6649' },
+  [Subject.VERBAL_REASONING]: { bg: '#f5bede', text: '#8b1c68', ring: '#8b1c68' },
+  [Subject.NON_VERBAL_REASONING]: { bg: '#fce29a', text: '#8a5007', ring: '#8a5007' },
 }
 
 // Dark mode: indigo-tinted gradients for subject cards
