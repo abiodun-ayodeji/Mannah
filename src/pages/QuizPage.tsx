@@ -29,7 +29,7 @@ export default function QuizPage() {
 
   if (questions.length === 0) {
     return (
-      <div className="aurora-flow relative flex min-h-screen items-center justify-center overflow-hidden px-6">
+      <div className="quiz-shell aurora-flow relative flex min-h-screen items-center justify-center overflow-hidden px-6">
         <div className="aurora-orb aurora-orb-cyan top-[-140px] right-[-120px] h-[380px] w-[380px]" />
         <div className="aurora-orb aurora-orb-violet bottom-[-160px] left-[-130px] h-[400px] w-[400px]" />
         <div className="relative z-10 w-full max-w-sm rounded-3xl aurora-card p-8 text-center">
