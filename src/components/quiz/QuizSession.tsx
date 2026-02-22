@@ -121,12 +121,21 @@ export default function QuizSession({ questions, onFinish, sessionType = 'practi
       const newStreak = isCorrect ? sessionStreak + 1 : 0
       setSessionStreak(newStreak)
 
+      // Count sessions already completed today on this topic for diminishing returns.
+      const startOfDay = new Date()
+      startOfDay.setHours(0, 0, 0, 0)
+      const todayTopicSessions = await db.sessions
+        .where('startTime').aboveOrEqual(startOfDay.getTime())
+        .filter((s) => s.topics.includes(question.topic))
+        .count()
+
       const xp = calculateXP({
         difficulty: question.difficulty,
         isCorrect,
         timeTaken,
         timeLimit: question.timeLimit,
         sessionStreak: isCorrect ? sessionStreak : 0,
+        todayTopicSessions,
       })
 
       // Play sound

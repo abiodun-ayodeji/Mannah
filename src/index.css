@@ -1256,6 +1256,7 @@ input:focus, select:focus {
 :root[data-theme='bright'] .boss-list-hero {
   background: linear-gradient(135deg, #1e1b4b, #3730a3, #4f46e5) !important;
   border-color: rgba(99,102,241,0.35) !important;
+  color: #ffffff !important;
 }
 :root[data-theme='bright'] .boss-list-hero [class*="text-white"] { color: #ffffff !important; }
 :root[data-theme='bright'] .boss-list-hero .text-white\/70 { color: rgba(255,255,255,0.7) !important; }
