@@ -71,6 +71,8 @@ npm run preview
 - `npm run build` - type-check and build
 - `npm run preview` - preview built app
 - `npm run lint` - run ESLint
+- `npm test` - run unit tests
+- `npm run test:watch` - run tests in watch mode
 - `npm run generate-icons` - generate app icons
 
 ## Project structure
@@ -98,6 +100,10 @@ If you are a parent, teacher, developer, or designer and want to improve learnin
 4. Open a pull request
 
 You can also open issues for bugs, ideas, or curriculum improvements.
+
+## License
+
+Apache 2.0 — see [LICENSE](LICENSE) for details.
 
 ## Acknowledgment
 
