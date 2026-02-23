@@ -40,7 +40,7 @@ export function generateGeometry(seed: number, difficulty: Difficulty): Question
   let answer: number | string;
   let distractorValues: (number | string)[];
   let explanation: string;
-  let tags: string[] = ['geometry'];
+  const tags: string[] = ['geometry'];
 
   if (difficulty <= 2) {
     // Identify shape properties: sides or lines of symmetry

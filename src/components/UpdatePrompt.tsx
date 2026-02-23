@@ -1,12 +1,12 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { registerSW } from 'virtual:pwa-register'
 
 export default function UpdatePrompt() {
   const [needRefresh, setNeedRefresh] = useState(false)
-  const [updateSW, setUpdateSW] = useState<((reloadPage?: boolean) => Promise<void>) | null>(null)
+  const updateSWRef = useRef<((reloadPage?: boolean) => Promise<void>) | null>(null)
 
   useEffect(() => {
-    const update = registerSW({
+    updateSWRef.current = registerSW({
       onNeedRefresh() {
         setNeedRefresh(true)
       },
@@ -14,12 +14,11 @@ export default function UpdatePrompt() {
         // silently ready for offline
       },
     })
-    setUpdateSW(() => update)
   }, [])
 
   const handleUpdate = useCallback(() => {
-    updateSW?.(true)
-  }, [updateSW])
+    updateSWRef.current?.(true)
+  }, [])
 
   const handleDismiss = useCallback(() => {
     setNeedRefresh(false)

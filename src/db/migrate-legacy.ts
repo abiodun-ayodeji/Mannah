@@ -52,9 +52,9 @@ export async function migrateLegacyDB(): Promise<void> {
       const rows = await legacyTable.toArray()
       if (rows.length > 0) {
         // Only import if MannahDB table is empty (don't overwrite newer data)
-        const existingCount = await (db as any)[tableName].count()
+        const existingCount = await db.table(tableName).count()
         if (existingCount === 0) {
-          await (db as any)[tableName].bulkPut(rows)
+          await db.table(tableName).bulkPut(rows)
         }
       }
     }

@@ -133,7 +133,7 @@ function generateOddOneOutSet(
 
   // Add slight variety in difficulty >= 4 (vary an unrelated property slightly)
   if (difficulty >= 4) {
-    normals.forEach((n, _i) => {
+    normals.forEach((n) => {
       if (property !== 'rotation') {
         n.rotation = randomInt(0, 1, rng) * (rng() < 0.3 ? 5 : 0);
       }

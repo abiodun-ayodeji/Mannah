@@ -2,22 +2,12 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { track } from '@vercel/analytics'
 
-const FEEDBACK_COUNT_KEY = 'mannah_feedback_count'
-const SHOW_EVERY = 5
-
 const RATINGS = [
   { emoji: '\u{1F615}', label: 'Confused', value: 1 },
   { emoji: '\u{1F610}', label: 'Okay', value: 2 },
   { emoji: '\u{1F60A}', label: 'Good', value: 3 },
   { emoji: '\u{1F929}', label: 'Love it', value: 4 },
 ]
-
-/** Increment the quiz counter and return true if we should show the prompt. */
-export function shouldShowFeedback(): boolean {
-  const count = parseInt(localStorage.getItem(FEEDBACK_COUNT_KEY) ?? '0', 10) + 1
-  localStorage.setItem(FEEDBACK_COUNT_KEY, String(count))
-  return count % SHOW_EVERY === 0
-}
 
 interface FeedbackPromptProps {
   /** Extra context sent alongside the rating event */

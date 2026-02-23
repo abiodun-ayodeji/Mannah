@@ -1,7 +1,10 @@
 import { useCallback, useRef } from 'react';
 
 // Web Audio API based sound effects (no external files needed)
-const audioContext = typeof window !== 'undefined' ? new (window.AudioContext || (window as any).webkitAudioContext)() : null;
+const AudioCtx = typeof window !== 'undefined'
+  ? window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext
+  : null;
+const audioContext = AudioCtx ? new AudioCtx() : null;
 
 function playTone(frequency: number, duration: number, type: OscillatorType = 'sine', volume = 0.3) {
   if (!audioContext) return;

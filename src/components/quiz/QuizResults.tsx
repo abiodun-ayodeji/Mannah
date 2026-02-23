@@ -3,7 +3,8 @@ import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import { track } from '@vercel/analytics'
 import type { AttemptRecord } from '../../types/progress'
-import FeedbackPrompt, { shouldShowFeedback } from '../FeedbackPrompt'
+import FeedbackPrompt from '../FeedbackPrompt'
+import { shouldShowFeedback } from '../../utils/feedback'
 
 interface QuizResultsProps {
   attempts: AttemptRecord[]
