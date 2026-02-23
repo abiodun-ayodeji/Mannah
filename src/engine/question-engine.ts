@@ -52,7 +52,7 @@ import {
 } from './generators/nonverbal/extended-topics';
 import { MathsTopic, VerbalReasoningTopic, NonVerbalTopic, EnglishTopic } from '../types/subject';
 
-const GENERATORS: Partial<Record<Topic, QuestionGenerator>> = {
+const GENERATORS: Record<Topic, QuestionGenerator> = {
   [MathsTopic.ARITHMETIC]: generateArithmetic,
   [MathsTopic.FRACTIONS]: generateFractions,
   [MathsTopic.DECIMALS]: generateDecimals,
@@ -107,11 +107,9 @@ function getSubjectForTopic(topic: Topic): Subject {
   return Subject.ENGLISH;
 }
 
-export function generateQuestion(topic: Topic, difficulty: Difficulty): Question | null {
-  const generator = GENERATORS[topic];
-  if (!generator) return null;
+export function generateQuestion(topic: Topic, difficulty: Difficulty): Question {
   const seed = Date.now() + Math.floor(Math.random() * 100000);
-  return generator(seed, difficulty);
+  return GENERATORS[topic](seed, difficulty);
 }
 
 export function generateQuizQuestions(
@@ -123,10 +121,7 @@ export function generateQuizQuestions(
   for (let i = 0; i < count; i++) {
     const topic = topics[i % topics.length];
     const seed = Date.now() + i * 7919 + Math.floor(Math.random() * 10000);
-    const generator = GENERATORS[topic];
-    if (generator) {
-      questions.push(generator(seed, difficulty));
-    }
+    questions.push(GENERATORS[topic](seed, difficulty));
   }
   return questions;
 }
