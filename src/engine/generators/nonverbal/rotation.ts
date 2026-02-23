@@ -1,18 +1,8 @@
 import type { Question, Difficulty } from '../../../types/question';
 import { Subject, NonVerbalTopic } from '../../../types/subject';
-import { createRng, randomInt, shuffle, pick, uniqueId } from '../../../utils/random';
+import { createRng, shuffle, pick, uniqueId } from '../../../utils/random';
 
 const COLORS = ['#3B82F6', '#EF4444', '#10B981', '#F59E0B', '#8B5CF6', '#EC4899'];
-
-function polygonPoints(cx: number, cy: number, r: number, sides: number, rotDeg: number): string {
-  const pts: string[] = [];
-  const rotRad = (rotDeg * Math.PI) / 180;
-  for (let i = 0; i < sides; i++) {
-    const angle = rotRad + (2 * Math.PI * i) / sides - Math.PI / 2;
-    pts.push(`${cx + r * Math.cos(angle)},${cy + r * Math.sin(angle)}`);
-  }
-  return pts.join(' ');
-}
 
 interface ShapeConfig {
   type: 'asymmetric-polygon' | 'arrow' | 'l-shape' | 'flag' | 'composite';

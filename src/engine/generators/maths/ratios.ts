@@ -2,15 +2,6 @@ import type { Question, Difficulty } from '../../../types/question';
 import { Subject, MathsTopic } from '../../../types/subject';
 import { createRng, randomInt, shuffle, pick, uniqueId } from '../../../utils/random';
 
-function gcd(a: number, b: number): number {
-  a = Math.abs(a);
-  b = Math.abs(b);
-  while (b) {
-    [a, b] = [b, a % b];
-  }
-  return a;
-}
-
 function numericDistractors(answer: number, rng: () => number): number[] {
   const distractors = new Set<number>();
   while (distractors.size < 3) {

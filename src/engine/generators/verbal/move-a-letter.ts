@@ -1,6 +1,6 @@
 import type { Question, Difficulty } from '../../../types/question';
 import { Subject, VerbalReasoningTopic } from '../../../types/subject';
-import { createRng, randomInt, shuffle, pick, uniqueId } from '../../../utils/random';
+import { createRng, shuffle, pick, uniqueId } from '../../../utils/random';
 
 // Each entry: [originalWord1, originalWord2, movedLetter, newWord1, newWord2]
 // Moving 'movedLetter' from word1 to word2 creates two new valid words

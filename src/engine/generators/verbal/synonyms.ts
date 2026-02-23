@@ -1,6 +1,6 @@
 import type { Question, Difficulty } from '../../../types/question';
 import { Subject, VerbalReasoningTopic } from '../../../types/subject';
-import { createRng, randomInt, shuffle, pick, uniqueId } from '../../../utils/random';
+import { createRng, randomInt, shuffle, uniqueId } from '../../../utils/random';
 
 // [word, synonym] pairs appropriate for 10-11 year olds
 const SYNONYM_PAIRS: [string, string][] = [

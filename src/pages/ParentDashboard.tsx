@@ -272,7 +272,7 @@ export default function ParentDashboard() {
         </div>
       </motion.section>
 
-      {/* Help Keep Mannah Free — collapsible */}
+      {/* Help us Improve Mannah — collapsible */}
       <motion.section
         className="parent-support-banner overflow-hidden rounded-2xl"
         initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.26 }}
@@ -285,8 +285,8 @@ export default function ParentDashboard() {
           <div className="flex items-center gap-3">
             <Heart className="size-5 text-rose-300" strokeWidth={2} />
             <div>
-              <p className="text-sm font-extrabold text-white">Help Keep Mannah Free</p>
-              <p className="text-xs text-white/60">Ad-free and free for every family</p>
+              <p className="text-sm font-extrabold text-white">Help us Improve Mannah</p>
+              <p className="text-xs text-white/60">Share ideas, report bugs, help us build</p>
             </div>
           </div>
           <motion.div animate={{ rotate: supportOpen ? 180 : 0 }} transition={{ duration: 0.2 }}>
@@ -306,15 +306,15 @@ export default function ParentDashboard() {
             >
               <div className="flex flex-col gap-3 px-5 pb-5">
                 <a
-                  href="https://buy.stripe.com/bJe28r8bZe254a8e4Pdby00"
+                  href="https://github.com/abiodun-ayodeji/Mannah"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 rounded-xl bg-white/15 px-4 py-3 transition-colors hover:bg-white/20"
                 >
-                  <span className="text-xl">☕</span>
+                  <span className="text-xl">⭐</span>
                   <div>
-                    <p className="text-sm font-extrabold text-white">Support Mannah</p>
-                    <p className="text-xs text-white/60">Buy me a coffee — I need it to keep Mannah up to date</p>
+                    <p className="text-sm font-extrabold text-white">Contribute on GitHub</p>
+                    <p className="text-xs text-white/60">Report bugs, suggest features, or contribute code</p>
                   </div>
                 </a>
                 <a
@@ -325,7 +325,7 @@ export default function ParentDashboard() {
                 >
                   <MessageSquare className="size-5 text-white/80" strokeWidth={2} />
                   <div>
-                    <p className="text-sm font-extrabold text-white">Give Feedback</p>
+                    <p className="text-sm font-extrabold text-white">Send Feedback</p>
                     <p className="text-xs text-white/60">Tell us what would make this better</p>
                   </div>
                 </a>

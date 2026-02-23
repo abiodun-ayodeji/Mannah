@@ -1,8 +1,6 @@
 import { useLiveQuery } from 'dexie-react-hooks';
-import { useEffect } from 'react';
 import { db } from '../db/database';
 import type { UserProfile } from '../types/user';
-import { DEFAULT_SETTINGS } from '../types/user';
 
 const USER_ID = 'default';
 

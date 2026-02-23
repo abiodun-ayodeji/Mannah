@@ -1,4 +1,3 @@
-import { Subject } from './subject';
 import { Difficulty } from './question';
 
 export interface UserProfile {

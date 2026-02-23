@@ -1,6 +1,6 @@
 import type { Question, Difficulty } from '../../../types/question';
 import { Subject, NonVerbalTopic } from '../../../types/subject';
-import { createRng, randomInt, shuffle, pick, uniqueId } from '../../../utils/random';
+import { createRng, randomInt, pick, uniqueId } from '../../../utils/random';
 
 const COLORS = ['#3B82F6', '#EF4444', '#10B981', '#F59E0B', '#8B5CF6', '#EC4899', '#F97316', '#06B6D4'];
 
@@ -133,7 +133,7 @@ function generateOddOneOutSet(
 
   // Add slight variety in difficulty >= 4 (vary an unrelated property slightly)
   if (difficulty >= 4) {
-    normals.forEach((n, i) => {
+    normals.forEach((n, _i) => {
       if (property !== 'rotation') {
         n.rotation = randomInt(0, 1, rng) * (rng() < 0.3 ? 5 : 0);
       }

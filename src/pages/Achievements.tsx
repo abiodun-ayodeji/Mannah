@@ -28,7 +28,6 @@ export default function AchievementsPage() {
   })
 
   const unlocked = enriched.filter((a) => a.unlockedAt)
-  const locked = enriched.filter((a) => !a.unlockedAt)
 
   const categories = ['volume', 'mastery', 'streak', 'speed', 'exploration', 'special'] as const
   const categoryLabels: Record<string, string> = {

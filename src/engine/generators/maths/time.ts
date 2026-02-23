@@ -134,7 +134,6 @@ export function generateTime(seed: number, difficulty: Difficulty): Question {
   // Parse answer to make plausible distractors
   const timeMatch12 = answerStr.match(/^(\d{1,2}):(\d{2}) (am|pm)$/);
   const timeMatch24 = answerStr.match(/^(\d{2}):(\d{2})$/);
-  const durMatch = answerStr.match(/^(\d+) hour/);
 
   while (distractors.size < 3) {
     if (timeMatch12) {

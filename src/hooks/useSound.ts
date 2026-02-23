@@ -1,5 +1,4 @@
 import { useCallback, useRef } from 'react';
-import { Howl } from 'howler';
 
 // Web Audio API based sound effects (no external files needed)
 const audioContext = typeof window !== 'undefined' ? new (window.AudioContext || (window as any).webkitAudioContext)() : null;

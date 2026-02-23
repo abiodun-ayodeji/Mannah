@@ -1,6 +1,6 @@
 import type { Question, Difficulty } from '../../../types/question';
 import { Subject, VerbalReasoningTopic } from '../../../types/subject';
-import { createRng, randomInt, shuffle, pick, uniqueId } from '../../../utils/random';
+import { createRng, randomInt, shuffle, uniqueId } from '../../../utils/random';
 
 // [first half, second half]
 const COMPOUND_WORDS: [string, string][] = [
