@@ -103,8 +103,8 @@ export function generateNVRMatrices(seed: number, difficulty: Difficulty): Quest
   const baseRotation = 0;
 
   // Pick alternate values for changing properties
-  let altShape = pick(SHAPES.filter((s) => s !== baseShape), rng);
-  let altColor = pick(COLORS.filter((c) => c !== baseColor), rng);
+  const altShape = pick(SHAPES.filter((s) => s !== baseShape), rng);
+  const altColor = pick(COLORS.filter((c) => c !== baseColor), rng);
   const altSizeIdx = SIZES.indexOf(baseSize as typeof SIZES[number]);
   const altSize = SIZES[(altSizeIdx + 1) % SIZES.length];
   const altRotation = pick([90, 180, 270], rng);

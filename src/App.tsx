@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { Routes, Route } from 'react-router-dom'
 import { Analytics } from '@vercel/analytics/react'
@@ -28,7 +28,7 @@ import Onboarding from './pages/Onboarding'
 import Landing from './pages/Landing'
 
 export default function App() {
-  const [appPhase, setAppPhase] = useState<'loading' | 'landing' | 'onboarding' | 'app'>('loading')
+  const [phaseOverride, setPhaseOverride] = useState<'onboarding' | null>(null)
   const [achievementToast, setAchievementToast] = useState<Achievement | null>(null)
   const [splashDone, setSplashDone] = useState(false)
   const [migrated, setMigrated] = useState(false)
@@ -45,14 +45,11 @@ export default function App() {
     return { data }
   }, [migrated])
 
-  useEffect(() => {
-    if (profileResult === undefined) return
-    if (!profileResult.data) {
-      setAppPhase('landing')
-    } else {
-      setAppPhase('app')
-    }
-  }, [profileResult])
+  const appPhase = useMemo<'loading' | 'landing' | 'onboarding' | 'app'>(() => {
+    if (phaseOverride) return phaseOverride
+    if (profileResult === undefined) return 'loading'
+    return profileResult.data ? 'app' : 'landing'
+  }, [profileResult, phaseOverride])
 
   useEffect(() => {
     const timer = setTimeout(() => setSplashDone(true), 1200)
@@ -124,11 +121,11 @@ export default function App() {
   }
 
   if (appPhase === 'landing') {
-    return <Landing onGetStarted={() => setAppPhase('onboarding')} />
+    return <Landing onGetStarted={() => setPhaseOverride('onboarding')} />
   }
 
   if (appPhase === 'onboarding') {
-    return <Onboarding onComplete={() => setAppPhase('app')} onBack={() => setAppPhase('landing')} />
+    return <Onboarding onComplete={() => setPhaseOverride(null)} onBack={() => setPhaseOverride(null)} />
   }
 
   return (
