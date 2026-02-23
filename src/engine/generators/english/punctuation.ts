@@ -1,6 +1,6 @@
 import type { Question, Difficulty } from '../../../types/question';
 import { Subject, EnglishTopic } from '../../../types/subject';
-import { createRng, randomInt, shuffle, pick, uniqueId } from '../../../utils/random';
+import { createRng, shuffle, pick, uniqueId } from '../../../utils/random';
 
 interface PunctuationTemplate {
   sentence: string;

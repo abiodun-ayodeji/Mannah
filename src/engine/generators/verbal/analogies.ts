@@ -1,6 +1,6 @@
 import type { Question, Difficulty } from '../../../types/question';
 import { Subject, VerbalReasoningTopic } from '../../../types/subject';
-import { createRng, randomInt, shuffle, pick, uniqueId } from '../../../utils/random';
+import { createRng, shuffle, pick, uniqueId } from '../../../utils/random';
 
 // [A, B, C, D] meaning "A is to B as C is to D"
 type AnalogyEntry = [string, string, string, string];

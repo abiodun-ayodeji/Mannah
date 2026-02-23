@@ -21,7 +21,6 @@ export function generateAlgebra(seed: number, difficulty: Difficulty): Question 
       explanation = `x + ${a} = ${b}, so x = ${b} - ${a} = ${x}`;
       tags.push('addition');
     } else {
-      const b = x - a > 0 ? x - a : x + a;
       if (x - a > 0) {
         prompt = `Find x: x - ${a} = ${x - a}`;
         explanation = `x - ${a} = ${x - a}, so x = ${x - a} + ${a} = ${x}`;
@@ -47,7 +46,6 @@ export function generateAlgebra(seed: number, difficulty: Difficulty): Question 
     } else {
       const a = randomInt(2, 8, rng);
       const x = randomInt(2, 12, rng);
-      const b = x * a;
       prompt = `Find x: x ÷ ${a} = ${x}`;
       // Actually b/a = x, so ask: b ÷ a = x means find b? No, let's keep it standard.
       // x / a = result, find x
@@ -99,9 +97,6 @@ export function generateAlgebra(seed: number, difficulty: Difficulty): Question 
       const c = randomInt(1, a - 1, rng);
       const d = randomInt(1, 20, rng);
       const b = c * x + d - a * x;
-      // Ensure b makes sense (could be negative, present as subtraction)
-      const lhs = a * x + b;
-      const rhs = c * x + d;
       if (b >= 0) {
         prompt = `Find x: ${a}x + ${b} = ${c}x + ${d}`;
         explanation = `${a}x + ${b} = ${c}x + ${d} → ${a - c}x = ${d - b} → x = ${d - b} ÷ ${a - c} = ${x}`;

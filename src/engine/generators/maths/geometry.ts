@@ -23,13 +23,6 @@ const SHAPES: ShapeInfo[] = [
   { name: 'kite', sides: 4, sumAngles: 360, symmetryLines: 1 },
 ];
 
-const ANGLE_TYPES: { name: string; min: number; max: number }[] = [
-  { name: 'acute', min: 10, max: 89 },
-  { name: 'right', min: 90, max: 90 },
-  { name: 'obtuse', min: 91, max: 179 },
-  { name: 'reflex', min: 181, max: 350 },
-];
-
 function numericDistractors(answer: number, rng: () => number): number[] {
   const distractors = new Set<number>();
   while (distractors.size < 3) {

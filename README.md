@@ -6,21 +6,24 @@ Mannah is a kid-focused 11+ learning app built to make daily practice feel like 
 
 I am a father.
 
-I wanted a study tool my child would actually want to open every day: colorful, motivating, and structured enough for real progress. Mannah was built from that need: help children grow confidence in Maths, English, Verbal Reasoning, and Non-Verbal Reasoning while giving parents clear visibility.
+I wanted a study tool my child would actually want to open every day: colorful, motivating, and structured enough for real progress. Mannah was built from that need: help children grow confidence in Maths, English, Verbal Reasoning, and Non-Verbal Reasoning while giving parents a clear progress report.
 
 ## What it does
 
-- Adaptive quiz flow with recommendations based on weaker topics
-- Subject journeys and constellation-style progression
-- Daily challenges and boss battles for motivation
-- XP, levels, streaks, and achievements
-- Parent dashboard with PIN lock, weekly activity, and focus areas
-- Bell notifications for:
-- `Streak at risk`
-- `Achievement unlocked`
-- `Weekly summary ready`
-- Aurora glass UI with bright/dark theme toggle (chameleon control)
-- Offline-ready PWA behavior and install prompts
+### 36 question generators across 4 subjects
+Maths (arithmetic, fractions, decimals, percentages, algebra, ratios, geometry, measurement, data handling, word problems, time, money), English (spelling, grammar, vocabulary, punctuation, cloze, sentence completion), Verbal Reasoning (synonyms, antonyms, analogies, letter series, number series, compound words, hidden words, move-a-letter, missing letters, shuffled sentences, word-letter codes), and Non-Verbal Reasoning (series, rotation, reflection, matrices, odd-one-out). Every question is generated from a seeded RNG so the same seed always produces the same question.
+
+### Adaptive difficulty
+The app tracks per-topic accuracy and recommends what to practise next, weakest topics first. A difficulty floor prevents children from farming easy questions once they've proven they can handle harder ones. Five difficulty levels scale from straightforward to exam-hard.
+
+### Gamification that drives daily habits
+XP with difficulty multipliers and speed bonuses. Diminishing returns stop topic-grinding. Levels, streaks, achievements, daily challenges, and boss battles give children a reason to come back every day.
+
+### Parent dashboard
+PIN-locked view showing weekly activity, per-subject accuracy, total questions answered, and focus-area recommendations. No accounts, no logins, no data leaves the device.
+
+### Offline-first PWA
+All data lives in IndexedDB via Dexie. The app installs to the home screen, works without an internet connection, and auto-updates via service worker.
 
 ## Tech stack
 

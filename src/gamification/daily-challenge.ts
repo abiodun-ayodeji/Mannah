@@ -1,5 +1,5 @@
 import { format } from 'date-fns';
-import { createRng, pick } from '../utils/random';
+import { createRng } from '../utils/random';
 import { Subject, MathsTopic, VerbalReasoningTopic, EnglishTopic, NonVerbalTopic } from '../types/subject';
 import type { Topic } from '../types/subject';
 import type { Difficulty } from '../types/question';

@@ -12,10 +12,6 @@ const ITEMS = [
   'sweets', 'crayons', 'cards', 'biscuits', 'balloons', 'flowers',
 ];
 
-interface Template {
-  build: (rng: () => number) => { prompt: string; answer: number; explanation: string; tags: string[] };
-}
-
 function makeAddTemplate(rng: () => number, max: number): { prompt: string; answer: number; explanation: string; tags: string[] } {
   const name = pick(NAMES, rng);
   const item = pick(ITEMS, rng);

@@ -18,14 +18,6 @@ const SUBJECT_CARD_STYLES: Record<Subject, { bg: string; text: string; ring: str
   [Subject.NON_VERBAL_REASONING]: { bg: '#fce29a', text: '#8a5007', ring: '#8a5007' },
 }
 
-// Dark mode: indigo-tinted gradients for subject cards
-const SUBJECT_DARK_GRADIENTS: Record<Subject, string> = {
-  [Subject.MATHS]: 'from-[#365fdc]/65 to-[#23367e]/65',
-  [Subject.ENGLISH]: 'from-[#0c8f79]/65 to-[#124f57]/65',
-  [Subject.VERBAL_REASONING]: 'from-[#b4408b]/65 to-[#5e2852]/65',
-  [Subject.NON_VERBAL_REASONING]: 'from-[#c17a24]/65 to-[#664218]/65',
-}
-
 const SCORE_CAP = 50
 
 function toQuizLink(subject: Subject, difficulty: number, topic?: string) {
