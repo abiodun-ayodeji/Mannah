@@ -201,11 +201,11 @@ export default function Progress() {
               <span className="pg-mini-label text-[10px] font-bold uppercase tracking-wide">Attempted</span>
             </div>
             <div className="pg-mini-stat flex flex-col items-center rounded-xl p-3">
-              <span className="pg-mini-value pg-accent-correct text-2xl font-black">{stats?.correct ?? 0}</span>
+              <span className="pg-mini-value text-2xl font-black" style={{ color: 'rgb(110, 231, 183)' }}>{stats?.correct ?? 0}</span>
               <span className="pg-mini-label text-[10px] font-bold uppercase tracking-wide">Correct</span>
             </div>
             <div className="pg-mini-stat flex flex-col items-center rounded-xl p-3">
-              <span className="pg-mini-value pg-accent-accuracy text-2xl font-black">
+              <span className="pg-mini-value text-2xl font-black" style={{ color: 'rgb(196, 181, 253)' }}>
                 {accuracy > 0 ? `${accuracy}%` : '-'}
               </span>
               <span className="pg-mini-label text-[10px] font-bold uppercase tracking-wide">Accuracy</span>
@@ -230,11 +230,11 @@ export default function Progress() {
               <span className="pg-mini-label text-[10px] font-bold uppercase tracking-wide">Questions</span>
             </div>
             <div className="pg-mini-stat flex flex-col items-center rounded-xl p-3">
-              <span className="pg-mini-value pg-accent-correct text-2xl font-black">{weekly?.avgAccuracy ?? 0}%</span>
+              <span className="pg-mini-value text-2xl font-black" style={{ color: 'rgb(110, 231, 183)' }}>{weekly?.avgAccuracy ?? 0}%</span>
               <span className="pg-mini-label text-[10px] font-bold uppercase tracking-wide">Accuracy</span>
             </div>
             <div className="pg-mini-stat flex flex-col items-center rounded-xl p-3">
-              <span className="pg-mini-value pg-accent-xp text-2xl font-black">{weekly?.totalXP ?? 0}</span>
+              <span className="pg-mini-value text-2xl font-black" style={{ color: 'rgb(103, 232, 249)' }}>{weekly?.totalXP ?? 0}</span>
               <span className="pg-mini-label text-[10px] font-bold uppercase tracking-wide">XP Earned</span>
             </div>
           </div>

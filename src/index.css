@@ -102,20 +102,6 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateX(20px);
 }
 
-/* Toggle switch — bright mode */
-:root[data-theme='bright'] .toggle-switch {
-  background: #d1d5db;
-  border: 1px solid #c0c4cc;
-}
-:root[data-theme='bright'] .toggle-switch:checked {
-  background: #5b4cff;
-  border-color: #5b4cff;
-}
-:root[data-theme='bright'] .toggle-switch::before {
-  background: #ffffff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
-}
-
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 4px;
@@ -1223,11 +1209,6 @@ input:focus, select:focus {
 .pg-subject-count { color: rgba(168, 199, 234, 0.65); }
 .pg-bar-track { background: rgba(255, 255, 255, 0.1); }
 
-/* Accent value colors */
-.pg-accent-correct { color: rgb(110, 231, 183); }
-.pg-accent-accuracy { color: rgb(196, 181, 253); }
-.pg-accent-xp { color: rgb(103, 232, 249); }
-
 /* ── Progress bright mode ── */
 :root[data-theme='bright'] .pg-hero {
   background: #F7F6FC;
@@ -1268,10 +1249,6 @@ input:focus, select:focus {
 :root[data-theme='bright'] .pg-subject-name { color: #0f1419; }
 :root[data-theme='bright'] .pg-subject-count { color: #9ca3af; }
 :root[data-theme='bright'] .pg-bar-track { background: rgba(0, 0, 0, 0.06); }
-
-:root[data-theme='bright'] .pg-accent-correct { color: #059669; }
-:root[data-theme='bright'] .pg-accent-accuracy { color: #7c3aed; }
-:root[data-theme='bright'] .pg-accent-xp { color: #0891b2; }
 
 
 /* ════════════════════════════════════════════════════════════════════════
@@ -1737,5 +1714,10 @@ input:focus, select:focus {
 :root[data-theme='bright'] .home-empty-card {
   background: #F7F6FC;
   border: 1px solid rgba(91, 76, 255, 0.12);
+}
+
+/* aurora-flow in bright becomes plain light bg */
+:root[data-theme='bright'] .aurora-flow {
+  background: #f5f7fa;
 }
 
