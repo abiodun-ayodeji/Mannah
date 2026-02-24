@@ -5,7 +5,6 @@ import { Subject, SUBJECT_CONFIG } from '../types/subject'
 import { useXP } from '../hooks/useXP'
 import { useStreak } from '../hooks/useStreak'
 import { getLevelTitle } from '../types/gamification'
-import XPBar from '../components/gamification/XPBar'
 import StreakDisplay from '../components/gamification/StreakDisplay'
 
 export default function Progress() {
@@ -55,14 +54,9 @@ export default function Progress() {
             </div>
           </div>
 
-          <div className="flex-1">
-            <XPBar
-              current={xpState?.xpInCurrentLevel ?? 0}
-              max={xpState?.xpForNextLevel ?? 100}
-              height={10}
-              showLabel
-            />
-          </div>
+          <span className="rounded-lg bg-violet-500/20 px-3 py-1 text-xs font-bold text-violet-200">
+            {xpState?.xpInCurrentLevel ?? 0} / {xpState?.xpForNextLevel ?? 100} XP
+          </span>
         </div>
 
         {streak && (
@@ -125,7 +119,7 @@ export default function Progress() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2 + idx * 0.05 }}
               >
-                <div className="mb-2 flex items-center gap-3">
+                <div className="flex items-center gap-3">
                   <span className="grid size-9 place-items-center rounded-xl border border-white/20 bg-white/10 text-xl">
                     {config.icon}
                   </span>
@@ -135,13 +129,9 @@ export default function Progress() {
                       {s ? `${s.correct}/${s.total}` : '—'} solved
                     </p>
                   </div>
-                  <span className="text-xs font-bold text-[#cde4ff]">{pct}%</span>
-                </div>
-                <div className="aurora-progress-track h-2.5">
-                  <div
-                    className="h-full rounded-full transition-all duration-500 shimmer-bar"
-                    style={{ width: `${pct}%`, background: `linear-gradient(90deg, ${config.color}, #8be1ff)` }}
-                  />
+                  <span className={`rounded-lg px-2.5 py-0.5 text-xs font-black ${pct < 50 ? 'bg-rose-500/20 text-rose-300' : pct < 70 ? 'bg-amber-500/20 text-amber-300' : 'bg-emerald-500/20 text-emerald-300'}`}>
+                    {pct}%
+                  </span>
                 </div>
               </motion.div>
             )

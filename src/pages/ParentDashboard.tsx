@@ -171,18 +171,12 @@ export default function ParentDashboard() {
           </div>
         </div>
 
-        {/* XP mini progress */}
+        {/* XP pill */}
         {xpState && (
           <div className="mt-4">
-            <div className="aurora-progress-track h-2 overflow-hidden rounded-full">
-              <div
-                className="h-full rounded-full transition-all duration-700"
-                style={{ width: `${Math.min(100, Math.round((xpState.xpInCurrentLevel / xpState.xpForNextLevel) * 100))}%`, background: 'linear-gradient(90deg, #77d8ff, #8f8bff)' }}
-              />
-            </div>
-            <p className="mt-1.5 text-right text-[10px] font-semibold text-[#a5c4e7]">
-              {xpState.xpInCurrentLevel} / {xpState.xpForNextLevel} XP to Level {(xpState.currentLevel ?? 1) + 1}
-            </p>
+            <span className="rounded-lg bg-violet-500/20 px-3 py-1 text-xs font-bold text-violet-200">
+              {xpState.xpInCurrentLevel} / {xpState.xpForNextLevel} XP to Lvl {(xpState.currentLevel ?? 1) + 1}
+            </span>
           </div>
         )}
       </motion.section>
@@ -229,17 +223,15 @@ export default function ParentDashboard() {
           <div className="mt-3 flex flex-col gap-2">
             {topicAnalysis.slice(0, 3).map((topic) => {
               const pct = Math.round(topic.accuracy * 100)
-              const tone = pct < 50 ? 'linear-gradient(90deg,#fb7185,#ef4444)' : pct < 70 ? 'linear-gradient(90deg,#fbbf24,#f97316)' : 'linear-gradient(90deg,#34d399,#10b981)'
               return (
                 <div key={`${topic.subject}:${topic.topic}`} className="aurora-subtle flex items-center gap-3 rounded-xl px-3 py-2.5">
                   <span className="grid size-8 flex-shrink-0 place-items-center rounded-lg border border-white/20 bg-white/10 text-sm">
                     {SUBJECT_CONFIG[topic.subject as Subject].icon}
                   </span>
                   <span className="min-w-0 flex-1 truncate text-sm font-bold text-[#ecf8ff]">{TOPIC_LABELS[topic.topic]}</span>
-                  <div className="aurora-progress-track h-2 w-16 flex-shrink-0">
-                    <div className="h-full rounded-full" style={{ width: `${pct}%`, background: tone }} />
-                  </div>
-                  <span className="w-9 flex-shrink-0 text-right text-xs font-black text-[#cde4ff]">{pct}%</span>
+                  <span className={`flex-shrink-0 rounded-lg px-2.5 py-0.5 text-xs font-black ${pct < 50 ? 'bg-rose-500/20 text-rose-300' : pct < 70 ? 'bg-amber-500/20 text-amber-300' : 'bg-emerald-500/20 text-emerald-300'}`}>
+                    {pct}%
+                  </span>
                 </div>
               )
             })}
