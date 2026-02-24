@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap');
 
 @theme {
   /* Primary — Figma purple */
@@ -1162,7 +1161,7 @@ input:focus, select:focus {
 
 /* ═══════════════════════════════════════════════════════════════════════
    HOME PAGE — dark + bright
-   ═══════════════════════════════════════════════════════════════════════ */
+   ════════════════════════════════════════════��══════════════════════════ */
 
 /* Section titles / labels */
 .home-section-title { color: #ffffff; }
