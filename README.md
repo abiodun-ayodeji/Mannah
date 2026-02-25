@@ -2,6 +2,7 @@
 
 Mannah is a kid-focused 11+ learning app built to make daily practice feel like play, not pressure.
 
+
 ## Why I built this
 
 I am a father.
