@@ -122,29 +122,51 @@ export default function Home() {
           className="home-mission-card relative overflow-hidden rounded-3xl p-5 md:p-6"
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.35 }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/[0.06]" />
-          <div className="pointer-events-none absolute -bottom-12 left-1/4 h-36 w-36 rounded-full bg-white/[0.04]" />
+          {/* Decorative orbs */}
+          <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/[0.08]" />
+          <div className="pointer-events-none absolute -bottom-12 left-1/4 h-36 w-36 rounded-full bg-white/[0.06]" />
 
           <div className="relative z-10">
-            <span className="inline-block rounded-full bg-white/15 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-white/80">
+            <motion.span
+              className="inline-block rounded-full bg-white/15 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-white/80"
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.15, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            >
               Today&apos;s Mission
-            </span>
-            <h1 className="mt-2 text-2xl font-black text-white md:text-3xl">
+            </motion.span>
+            <motion.h1
+              className="mt-2 text-2xl font-black text-white md:text-3xl"
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.22, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            >
               Welcome back, {profile?.name ?? 'Student'}
-            </h1>
-            <p className="mt-1 text-sm font-medium text-white/65">
+            </motion.h1>
+            <motion.p
+              className="mt-1 text-sm font-medium text-white/70"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3, duration: 0.4 }}
+            >
               Keep your streak alive and improve your weakest topic.
-            </p>
+            </motion.p>
 
-            <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            <motion.div
+              className="mt-5 grid gap-3 sm:grid-cols-2"
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.38, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            >
               <motion.button
                 onClick={startPrimaryFlow}
-                className="inline-flex w-full items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-extrabold shadow-md"
+                className="home-mission-cta-primary inline-flex w-full items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-extrabold shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
                 style={{ background: '#FCD34D', color: '#1a1036' }}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.97 }}
+                transition={{ type: 'tween', duration: 0.15, ease: [0.25, 1, 0.5, 1] }}
               >
                 <Zap className="size-4" />
                 {primaryRecommendation ? `Quick ${primaryRecommendation.label} Practice` : 'Start 10 Questions'}
@@ -152,14 +174,15 @@ export default function Home() {
 
               <motion.button
                 onClick={startDailyChallenges}
-                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white/15 px-5 py-3 text-sm font-extrabold text-white"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white/15 px-5 py-3 text-sm font-extrabold text-white transition-colors duration-150 hover:bg-white/22 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.97 }}
+                transition={{ type: 'tween', duration: 0.15, ease: [0.25, 1, 0.5, 1] }}
               >
                 <Target className="size-4" />
                 Daily Challenges
               </motion.button>
-            </div>
+            </motion.div>
           </div>
         </motion.div>
 

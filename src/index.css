@@ -1563,6 +1563,14 @@ input:focus, select:focus {
   background: linear-gradient(135deg, #1e1880 0%, #4338ca 45%, #6d5ef7 100%);
 }
 
+/* Primary CTA hover glow inside mission card */
+.home-mission-cta-primary {
+  transition: box-shadow 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.home-mission-cta-primary:hover {
+  box-shadow: 0 0 0 1px rgba(252, 211, 77, 0.15), 0 6px 20px rgba(252, 211, 77, 0.35);
+}
+
 /* Restore white text and transparent-white backgrounds inside the mission card
    — both override the bright-mode main-scoped catch-alls */
 :root[data-theme='bright'] .home-mission-card [class*="text-white"],
