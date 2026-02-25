@@ -1269,6 +1269,13 @@ input:focus, select:focus {
    SETTINGS PAGE — dark + bright
    ════════════════════════════════════════════════════════════════════════ */
 
+/* Header avatar */
+.st-header-avatar {
+  background: linear-gradient(135deg, rgba(103, 232, 249, 0.5), rgba(139, 92, 246, 0.5));
+  border: 1px solid rgba(192, 240, 255, 0.3);
+  color: #ffffff;
+}
+
 /* Sections */
 .st-section {
   background: rgba(255, 255, 255, 0.06);
@@ -1276,6 +1283,14 @@ input:focus, select:focus {
 }
 .st-section-title { color: #ffffff; }
 .st-section-icon { color: #67e8f9; }
+.st-section-icon-wrap {
+  background: rgba(103, 232, 249, 0.1);
+}
+
+/* Danger zone icon wrap */
+.st-danger-icon-wrap {
+  background: rgba(239, 68, 68, 0.1);
+}
 
 /* Profile input group */
 .st-input-group { background: rgba(255, 255, 255, 0.04); }
@@ -1331,6 +1346,12 @@ input:focus, select:focus {
 }
 
 /* ── Settings bright mode ── */
+:root[data-theme='bright'] .st-header-avatar {
+  background: linear-gradient(135deg, #818cf8, #5b4cff);
+  border: none;
+  color: #ffffff;
+}
+
 :root[data-theme='bright'] .st-section {
   background: #ffffff;
   border: 1px solid rgba(91, 76, 255, 0.08);
@@ -1338,6 +1359,8 @@ input:focus, select:focus {
 }
 :root[data-theme='bright'] .st-section-title { color: #0f1419; }
 :root[data-theme='bright'] .st-section-icon { color: #5b4cff; }
+:root[data-theme='bright'] .st-section-icon-wrap { background: rgba(91, 76, 255, 0.08); }
+:root[data-theme='bright'] .st-danger-icon-wrap { background: rgba(239, 68, 68, 0.06); }
 
 :root[data-theme='bright'] .st-input-group { background: #F5F5FB; }
 :root[data-theme='bright'] .st-field-label { color: #6b7280; }
