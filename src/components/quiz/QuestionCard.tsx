@@ -3,6 +3,7 @@ import { Volume2, VolumeX } from 'lucide-react'
 import type { Question } from '../../types/question'
 import { useReadAloud } from '../../hooks/useReadAloud'
 import { useUserProfile } from '../../hooks/useUserProfile'
+import { sanitizeSvg } from '../../utils/sanitize-svg'
 
 interface QuestionCardProps {
   question: Question
@@ -47,7 +48,7 @@ export default function QuestionCard({
         <div className="aurora-card-soft flex justify-center overflow-hidden rounded-2xl p-4">
           <div
             className="svg-container w-full max-h-[150px]"
-            dangerouslySetInnerHTML={{ __html: question.svgData }}
+            dangerouslySetInnerHTML={{ __html: sanitizeSvg(question.svgData) }}
           />
         </div>
       )}

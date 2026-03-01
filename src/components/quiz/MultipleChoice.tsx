@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import type { QuestionOption } from '../../types/question'
+import { sanitizeSvg } from '../../utils/sanitize-svg'
 
 interface MultipleChoiceProps {
   options: QuestionOption[]
@@ -187,7 +188,7 @@ function SvgGrid({ options, selectedId, correctId, disabled, onSelect }: Multipl
             {opt.svgData ? (
               <div
                 className="svg-container h-full max-h-[86px] w-full max-w-[86px]"
-                dangerouslySetInnerHTML={{ __html: opt.svgData }}
+                dangerouslySetInnerHTML={{ __html: sanitizeSvg(opt.svgData) }}
               />
             ) : (
               <span className="text-center text-sm font-bold text-[#edf8ff]">{opt.label}</span>

@@ -5,7 +5,10 @@ export interface UserProfile {
   name: string;
   createdAt: number;
   settings: UserSettings;
+  /** @deprecated Use parentPinHash + parentPinSalt instead. */
   parentPin?: string;
+  parentPinHash?: string;
+  parentPinSalt?: string;
 }
 
 export interface UserSettings {
