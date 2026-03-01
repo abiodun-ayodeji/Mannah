@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useLiveQuery } from 'dexie-react-hooks'
@@ -24,6 +24,7 @@ import {
   TrendingUp,
   Zap,
 } from 'lucide-react'
+import { hashPin, verifyPin } from '../utils/pin-crypto'
 
 /* ────────────────────────────────────────────────────────────────────── */
 /*  Tiny helpers                                                         */
@@ -74,27 +75,75 @@ function AccuracyPill({ pct }: { pct: number }) {
 /*  PIN Gate Screen                                                      */
 /* ────────────────────────────────────────────────────────────────────── */
 
+const LOCKOUT_SECONDS = 30
+const MAX_ATTEMPTS = 3
+
 function PinGate({
   profile,
   onAuthenticate,
   onBack,
 }: {
-  profile: { parentPin?: string } | undefined
+  profile: { parentPin?: string; parentPinHash?: string; parentPinSalt?: string } | undefined
   onAuthenticate: () => void
   onBack: () => void
 }) {
   const [pin, setPin] = useState('')
   const [failedAttempts, setFailedAttempts] = useState(0)
   const [shaking, setShaking] = useState(false)
+  const [lockedUntil, setLockedUntil] = useState<number | null>(null)
+  const [lockCountdown, setLockCountdown] = useState(0)
+  const [verifying, setVerifying] = useState(false)
 
-  const handleSubmit = () => {
-    if (!profile?.parentPin) { onAuthenticate(); return }
-    if (pin === profile.parentPin) { onAuthenticate(); return }
-    setFailedAttempts((p) => p + 1)
-    setPin('')
-    setShaking(true)
-    setTimeout(() => setShaking(false), 450)
-  }
+  const isLocked = lockedUntil !== null && Date.now() < lockedUntil
+  const hasPin = !!(profile?.parentPinHash || profile?.parentPin)
+
+  // Countdown timer for lockout
+  useEffect(() => {
+    if (!lockedUntil) return
+    const tick = () => {
+      const remaining = Math.ceil((lockedUntil - Date.now()) / 1000)
+      if (remaining <= 0) {
+        setLockedUntil(null)
+        setLockCountdown(0)
+        setFailedAttempts(0)
+      } else {
+        setLockCountdown(remaining)
+      }
+    }
+    tick()
+    const id = setInterval(tick, 1000)
+    return () => clearInterval(id)
+  }, [lockedUntil])
+
+  const handleSubmit = useCallback(async () => {
+    if (verifying || isLocked) return
+    if (!hasPin) { onAuthenticate(); return }
+
+    setVerifying(true)
+    try {
+      let ok = false
+      if (profile?.parentPinHash && profile.parentPinSalt) {
+        ok = await verifyPin(pin, profile.parentPinHash, profile.parentPinSalt)
+      } else if (profile?.parentPin) {
+        // Legacy plaintext fallback — migrate on next save
+        ok = pin === profile.parentPin
+      }
+
+      if (ok) { onAuthenticate(); return }
+
+      const next = failedAttempts + 1
+      setFailedAttempts(next)
+      setPin('')
+      setShaking(true)
+      setTimeout(() => setShaking(false), 450)
+
+      if (next >= MAX_ATTEMPTS) {
+        setLockedUntil(Date.now() + LOCKOUT_SECONDS * 1000)
+      }
+    } finally {
+      setVerifying(false)
+    }
+  }, [pin, profile, failedAttempts, verifying, isLocked, hasPin, onAuthenticate])
 
   return (
     <div className="aurora-flow fixed inset-0 z-40 flex items-center justify-center overflow-hidden px-6">
@@ -112,12 +161,12 @@ function PinGate({
 
         <h1 className="mt-5 text-2xl font-black text-white">Parent Dashboard</h1>
         <p className="mt-2 text-sm leading-relaxed text-[#b6d3f5]">
-          {profile?.parentPin
+          {hasPin
             ? 'Enter your 4-digit PIN to view learning insights.'
             : 'No PIN set yet. Continue to open the dashboard.'}
         </p>
 
-        {profile?.parentPin ? (
+        {hasPin ? (
           <div className="mt-6 flex flex-col items-center gap-4">
             <motion.input
               type="password"
@@ -127,29 +176,31 @@ function PinGate({
               onChange={(e) => setPin(e.target.value.replace(/\D/g, ''))}
               onKeyDown={(e) => e.key === 'Enter' && handleSubmit()}
               placeholder="----"
-              className="aurora-input w-40 text-center text-2xl tracking-[0.5em] font-black"
+              disabled={isLocked || verifying}
+              className="aurora-input w-40 text-center text-2xl tracking-[0.5em] font-black disabled:opacity-50"
               animate={shaking ? { x: [0, -8, 8, -8, 8, 0] } : {}}
               transition={{ duration: 0.35 }}
             />
-            {failedAttempts > 0 && failedAttempts < 3 && (
-              <p className="text-xs font-bold text-rose-300">
-                Incorrect PIN. {3 - failedAttempts} attempt{3 - failedAttempts !== 1 ? 's' : ''} left.
-              </p>
-            )}
-            {failedAttempts >= 3 && profile.parentPin && (
-              <div className="rounded-xl border border-amber-300/25 bg-amber-300/10 px-4 py-2">
-                <p className="text-xs font-bold text-amber-200">
-                  Hint: {profile.parentPin[0]} _ _ {profile.parentPin[3]}
+            {isLocked ? (
+              <div className="rounded-xl border border-rose-300/25 bg-rose-300/10 px-4 py-2">
+                <p className="text-xs font-bold text-rose-200">
+                  Too many attempts. Try again in {lockCountdown}s.
                 </p>
               </div>
-            )}
+            ) : failedAttempts > 0 && failedAttempts < MAX_ATTEMPTS ? (
+              <p className="text-xs font-bold text-rose-300">
+                Incorrect PIN. {MAX_ATTEMPTS - failedAttempts} attempt
+                {MAX_ATTEMPTS - failedAttempts !== 1 ? 's' : ''} left.
+              </p>
+            ) : null}
             <motion.button
               onClick={handleSubmit}
-              className="aurora-button-primary w-full max-w-[200px] py-3 text-sm font-black"
+              disabled={isLocked || verifying}
+              className="aurora-button-primary w-full max-w-[200px] py-3 text-sm font-black disabled:opacity-50"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
             >
-              Unlock
+              {verifying ? 'Verifying…' : 'Unlock'}
             </motion.button>
           </div>
         ) : (
@@ -241,7 +292,12 @@ export default function ParentDashboard() {
   const topicAnalysis = useLiveQuery(() => getTopicStats(3), [])
 
   const handleSetPin = async (newPin: string) => {
-    await db.userProfile.update('default', { parentPin: newPin })
+    const { hash, salt } = await hashPin(newPin)
+    await db.userProfile.update('default', {
+      parentPinHash: hash,
+      parentPinSalt: salt,
+      parentPin: undefined, // clear legacy plaintext
+    })
     setShowSetPin(false)
   }
 
@@ -296,7 +352,7 @@ export default function ParentDashboard() {
           whileTap={{ scale: 0.97 }}
         >
           <Lock className="size-3.5" />
-          {showSetPin ? 'Cancel' : profile?.parentPin ? 'Change PIN' : 'Set PIN'}
+          {showSetPin ? 'Cancel' : (profile?.parentPinHash || profile?.parentPin) ? 'Change PIN' : 'Set PIN'}
         </motion.button>
       </motion.header>
 
